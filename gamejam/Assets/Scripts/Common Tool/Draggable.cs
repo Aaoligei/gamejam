@@ -39,6 +39,7 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             Unit unit = hit.collider.GetComponentInParent<Unit>();
             if (unit != null)
             {
+                unit.SkillModule = module;
                 unit.AddModule(module);
                 canvasGroup.alpha = 0f;
             }

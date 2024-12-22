@@ -10,8 +10,14 @@ public class PlayerCommonBehavior : MonoBehaviour
     private SerializedDictionary<AttributeType, float> Attributes;
 
     private Collider2D AttackTargetCollider;
-
     private Unit AttackTarget;
+    private Vector3 AttackPos;
+
+    private float moveSpeed;
+    private float attackPower;
+    private float attackRange;
+
+    private Skill skillModule;
 
     [SerializeField]private bool isCommonAttack = false;
 
@@ -24,20 +30,32 @@ public class PlayerCommonBehavior : MonoBehaviour
 
     private void Update()
     {
-        //ȷ������Ŀ��
+        //获取单位属性
+        moveSpeed = Attributes[AttributeType.MoveSpeed];
+        attackPower = Attributes[AttributeType.AttackPower];
+        attackRange = Attributes[AttributeType.AttackRange];
+        skillModule = unit.SkillModule;
+        
+        //确定普攻/技能攻击 目标
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
         transform, 10000f, "enemy");
+        AttackPos = AttackTargetCollider.transform.position;
         AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
 
-        //ִ����ͨ����
-        if (Vector3.Distance(transform.position, AttackTargetCollider.transform.position) 
-        <= Attributes[AttributeType.AttackRange])
+        //判断技能是否可以发动
+        if(skillModule.cooldown <= 0)
+        {
+
+        }
+
+        //判断是否在普攻范围内并攻击
+        if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
         {
             if(!isCommonAttack)
             {
-                Debug.Log("����");
-                isCommonAttack = true;//�����������
-                AttackTarget.TakeDamage(Attributes[AttributeType.AttackPower], unit.damegeType);
+                Debug.Log("普通攻击");
+                isCommonAttack = true;//攻击后进入间隔
+                AttackTarget.TakeDamage(attackPower, unit.damegeType);
             }
             else
             {
@@ -51,9 +69,8 @@ public class PlayerCommonBehavior : MonoBehaviour
         }
         else
         {
-            //�ƶ�
-            transform.position = Vector3.Lerp(transform.position, AttackTargetCollider.transform.position,
-            Time.deltaTime * Attributes[AttributeType.MoveSpeed]);
+            //移动
+            transform.position = Vector3.Lerp(transform.position, AttackPos, Time.deltaTime * moveSpeed);
         }
     }
 }

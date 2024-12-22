@@ -15,6 +15,7 @@ public class Unit:MonoBehaviour
     [SerializeField]
     private BaseAttributes ba;
 
+    public Skill SkillModule;
     public AttackType damegeType;
 
     //赋予单位基础属性
