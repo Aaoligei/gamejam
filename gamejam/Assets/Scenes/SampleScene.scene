@@ -573,7 +573,6 @@ GameObject:
   - component: {fileID: 1686655375}
   - component: {fileID: 1686655374}
   - component: {fileID: 1686655373}
-  - component: {fileID: 1686655376}
   m_Layer: 6
   m_HasEditorInfo: 1
   m_Name: HealthBar
@@ -665,23 +664,6 @@ Canvas:
   m_SortingLayerID: -699208747
   m_SortingOrder: 999
   m_TargetDisplay: 0
---- !u!114 &1686655376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686655371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 962e55e8e295ceb4cb5deae13d3cc27f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxValue: 100
-  Value: 100
-  bottomBar: {fileID: 1889017113}
-  topBar: {fileID: 1956814223}
-  barChangeSpeed: 10
 --- !u!1 &1889017112
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +750,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1905954604}
   - component: {fileID: 1905954603}
-  - component: {fileID: 1905954602}
   - component: {fileID: 1905954605}
   m_Layer: 6
   m_HasEditorInfo: 1
@@ -778,22 +759,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1905954602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905954601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f62096487c81d4abba91b3b682b18f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Modules: []
-  TotalAttributes:
-    _serializedList: []
-  ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
 --- !u!212 &1905954603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -897,7 +862,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
 --- !u!1 &1910552447
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +872,8 @@ GameObject:
   serializedVersion: 7
   m_Component:
   - component: {fileID: 1910552448}
+  - component: {fileID: 1910552449}
+  - component: {fileID: 1910552450}
   m_Layer: 6
   m_HasEditorInfo: 1
   m_Name: Monster01
@@ -932,6 +899,38 @@ Transform:
   - {fileID: 1686655372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910552449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910552447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962e55e8e295ceb4cb5deae13d3cc27f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
+  bottomBar: {fileID: 1889017113}
+  topBar: {fileID: 1956814223}
+  barChangeSpeed: 10
+--- !u!114 &1910552450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910552447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f62096487c81d4abba91b3b682b18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Modules: []
+  TotalAttributes:
+    _serializedList: []
+  ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
 --- !u!1 &1956814222
 GameObject:
   m_ObjectHideFlags: 0

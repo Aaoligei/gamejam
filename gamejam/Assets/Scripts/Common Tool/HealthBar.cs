@@ -1,13 +1,16 @@
+using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+    private SerializedDictionary<AttributeType, float> Attributes;
+
     [SerializeField]
-    public int MaxValue = 100;//最大血量
+    private float MaxValue;//最大血量
     [SerializeField]
-    public int Value = 100;//当前血量
+    private float Value;//当前血量
 
     [SerializeField]
     private RectTransform bottomBar;
@@ -22,12 +25,16 @@ public class HealthBar : MonoBehaviour
     private Coroutine adjustBarWidthCoroutine;//用于判断血条变化是否正在进行
     private void Start()
     {
+        Attributes = GetComponent<Unit>().TotalAttributes;
         fullWidth = topBar.rect.width;
+        MaxValue = Attributes[AttributeType.HealthCap];
     }
     private void Update()
     {
+ 
+        //Value = Attributes[AttributeType.CurrentHealth];
         //测试用
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             Change(20);
         }

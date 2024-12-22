@@ -36,7 +36,7 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (hit.collider != null && hit.collider.CompareTag("Unit"))
         {
             Debug.Log("»÷ÖÐÎïÌå");
-            Unit unit = hit.collider.GetComponent<Unit>();
+            Unit unit = hit.collider.GetComponentInParent<Unit>();
             if (unit != null)
             {
                 unit.AddModule(module);
