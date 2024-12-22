@@ -7,9 +7,7 @@ using UnityEngine;
 public class Unit:MonoBehaviour
 {
     public string Name;
-    //��ɫģ���б�
     public List<GameModule> Modules;
-    //��ɫ�Ļ�������
     [SerializedDictionary("Base Attribute", "Value")]
     public SerializedDictionary<AttributeType, float> TotalAttributes ;
     [SerializeField]
@@ -20,14 +18,12 @@ public class Unit:MonoBehaviour
 
     public HealthBar healthBar;
 
-    //���赥λ��������
     public void Awake()
     {
         TotalAttributes=ba.InitAttributes;
         
     }
 
-    //������������ģ���������
     public void Start()
     {
         foreach (var module in Modules)
@@ -47,7 +43,7 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
     }
 
-    //����ģ��
+    //增加模块
     public void AddModule(GameModule module)
     {
         Modules.Add(module);
@@ -55,13 +51,8 @@ public class Unit:MonoBehaviour
             TotalAttributes[attr.Key] += attr.Value;
     }
 
-    //ʹ�ü���
-    public void UseSkill(Skill skill, Unit target)
-    {
-        skill.Effect(target);
-    }
 
-    //�ܵ��˺�
+    //受到伤害
     public void TakeDamage(float damage,AttackType attackType)
     {
         float effectiveDamage;

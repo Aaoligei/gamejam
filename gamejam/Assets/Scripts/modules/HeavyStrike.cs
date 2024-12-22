@@ -7,16 +7,10 @@ public class HeavyStrike : Skill
     
     public float damage=100;
     public AttackType damageType=AttackType.Physic;
-   
-    protected override void Start()
-    {
-        base.Start();
-        isSkill = true;
-    }
 
-    public void Excute()
+    public override void Excute()
     {
-        Collider2D coll = CharacterBehaviorTool.AttackRangeCheck(transform, skillRange, "enemy");
+        Collider2D coll = CharacterBehaviorTool.AttackRangeCheck(currentUnit.transform, skillRange, "enemy");
         if (coll != null)
         {
             Unit unit = coll.GetComponent<Unit>();
@@ -27,13 +21,4 @@ public class HeavyStrike : Skill
         }
     }
 
-    private void Update()
-    {
-        timer-=Time.deltaTime;
-        if(timer < 0 )
-        {
-            timer = cooldown;
-            Excute();
-        }
-    }
 }
