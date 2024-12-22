@@ -15,6 +15,12 @@ public enum AttributeType
     MoveSpeed, // 移动速度
 }
 
+public enum AttackType
+{
+    Physic,//物理攻击
+    Magic//魔法攻击
+}
+
 [CreateAssetMenu(fileName = "New Base Attributes", menuName = "Attributes")]
 public class BaseAttributes : ScriptableObject
 {
