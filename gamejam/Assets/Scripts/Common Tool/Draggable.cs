@@ -7,6 +7,7 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private GameModule module;
+    public GameObject MGO;
 
     void Awake()
     {
@@ -31,12 +32,12 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        //ÉäÏß¼ì²â²¿·Ö
+        //ï¿½ï¿½ï¿½ß¼ï¿½â²¿ï¿½ï¿½
         RaycastHit2D hit = Physics2D.Raycast(eventData.pointerCurrentRaycast.worldPosition, Vector2.zero);
         Debug.Log(hit.collider);
         if (hit.collider != null && hit.collider.CompareTag("Unit"))
         {
-            Debug.Log("»÷ÖÐÎïÌå");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             Unit unit = hit.collider.GetComponentInParent<Unit>();
             if (unit != null)
             {
@@ -46,6 +47,8 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 {
                     unit.SkillModule = (Skill)module;
                 }
+                Instantiate(MGO,hit.transform.position, hit.transform.rotation, hit.collider.transform);
+                Destroy(this);
             }
         }
     }

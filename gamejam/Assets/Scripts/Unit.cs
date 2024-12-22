@@ -7,9 +7,9 @@ using UnityEngine;
 public class Unit:MonoBehaviour
 {
     public string Name;
-    //½ÇÉ«Ä£¿éÁÐ±í
+    //ï¿½ï¿½É«Ä£ï¿½ï¿½ï¿½Ð±ï¿½
     public List<GameModule> Modules;
-    //½ÇÉ«µÄ»ù´¡ÊôÐÔ
+    //ï¿½ï¿½É«ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [SerializedDictionary("Base Attribute", "Value")]
     public SerializedDictionary<AttributeType, float> TotalAttributes ;
     [SerializeField]
@@ -20,20 +20,21 @@ public class Unit:MonoBehaviour
 
     public HealthBar healthBar;
 
-    //¸³Óèµ¥Î»»ù´¡ÊôÐÔ
+    //ï¿½ï¿½ï¿½èµ¥Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void Awake()
     {
         TotalAttributes=ba.InitAttributes;
         
     }
 
-    //¸ù¾Ý×ÔÉí¹ÒÔØÄ£¿éµ÷ÕûÊôÐÔ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void Start()
     {
         foreach (var module in Modules)
         {
             foreach (var attr in module.Attributes)
                 TotalAttributes[attr.Key] += attr.Value;
+            
         }
 
         healthBar = GetComponent<HealthBar>();
@@ -46,7 +47,7 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
     }
 
-    //Ôö¼ÓÄ£¿é
+    //ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
     public void AddModule(GameModule module)
     {
         Modules.Add(module);
@@ -54,13 +55,13 @@ public class Unit:MonoBehaviour
             TotalAttributes[attr.Key] += attr.Value;
     }
 
-    //Ê¹ÓÃ¼¼ÄÜ
+    //Ê¹ï¿½Ã¼ï¿½ï¿½ï¿½
     public void UseSkill(Skill skill, Unit target)
     {
         skill.Effect(target);
     }
 
-    //ÊÜµ½ÉËº¦
+    //ï¿½Üµï¿½ï¿½Ëºï¿½
     public void TakeDamage(float damage,AttackType attackType)
     {
         float effectiveDamage;
@@ -77,11 +78,11 @@ public class Unit:MonoBehaviour
         if (TotalAttributes[AttributeType.CurrentHealth] <= 0)
         {
             TotalAttributes[AttributeType.CurrentHealth] = 0;
-            Debug.Log($"{name} has been slained!");
+            Debug.Log($"{Name} has been slained!");
         }
         else
         {
-
+            Debug.Log($"{Name} has been damaged!");
         }
     }
 }
