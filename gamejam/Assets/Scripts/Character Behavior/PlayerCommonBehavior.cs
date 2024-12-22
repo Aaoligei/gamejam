@@ -24,8 +24,6 @@ public class PlayerCommonBehavior : MonoBehaviour
 
     private void Update()
     {
-        
-
         //确定攻击目标
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
         transform, 10000f, "enemy");
@@ -37,6 +35,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         {
             if(!isCommonAttack)
             {
+                Debug.Log("攻击");
                 isCommonAttack = true;//攻击后进入间隔
                 AttackTarget.TakeDamage(Attributes[AttributeType.AttackPower], unit.damegeType);
             }
@@ -50,10 +49,12 @@ public class PlayerCommonBehavior : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            //移动
+            transform.position = Vector3.Lerp(transform.position, AttackTargetCollider.transform.position,
+            Time.deltaTime * Attributes[AttributeType.MoveSpeed]);
+        }
 
-        //移动
-        transform.position = Vector3.Lerp(transform.position, AttackTargetCollider.transform.position,
-        Time.deltaTime * Attributes[AttributeType.MoveSpeed]);
     }
-
 }
