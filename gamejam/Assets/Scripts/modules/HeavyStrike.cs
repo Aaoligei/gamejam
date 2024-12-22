@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HeavyStrike : Skill
 {
+    
     public float damage=100;
     public AttackType damageType=AttackType.Physic;
     public void Excute()
@@ -16,6 +17,20 @@ public class HeavyStrike : Skill
             {
                 unit.TakeDamage(damage,damageType);
             }
+        }
+    }
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    private void Update()
+    {
+        timer-= Time.deltaTime;
+        if (timer < 0)
+        {
+            timer=cooldown;
+            Excute();
         }
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 //基本模块
 public class GameModule:MonoBehaviour
 {
+    public bool isSkill;
     //模块名称
     public string Name { get; private set; }
     //模块属性
