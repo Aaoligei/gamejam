@@ -40,6 +40,7 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             Unit unit = hit.collider.GetComponentInParent<Unit>();
             if (unit != null)
             {
+                unit.SkillModule = module;
                 unit.AddModule(module);
                 Instantiate(MGO,hit.transform.position, hit.transform.rotation, hit.collider.transform);
                 Destroy(this);
