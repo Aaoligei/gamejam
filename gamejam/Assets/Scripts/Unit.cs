@@ -9,19 +9,27 @@ public class Unit:MonoBehaviour
     //角色模块列表
     public List<GameModule> Modules;
     //角色的基础属性
-    [SerializedDictionary("Base Attribute","Value")]
-    public SerializedDictionary<AttributeType, float> TotalAttributes;
+    [SerializedDictionary("Base Attribute", "Value")]
+    public SerializedDictionary<AttributeType, float> TotalAttributes ;
+    [SerializeField]
+    private BaseAttributes ba;
 
-    //游戏初始化根据自身挂载模块设置属性
+    //赋予单位基础属性
+    public void Awake()
+    {
+        TotalAttributes=ba.InitAttributes;
+        
+    }
+
+    //根据自身挂载模块调整属性
     public void Start()
     {
-        foreach (var type in System.Enum.GetValues(typeof(AttributeType)))
-            TotalAttributes[(AttributeType)type] = 0f;
-        foreach(var module in Modules)
+        foreach (var module in Modules)
         {
             foreach (var attr in module.Attributes)
                 TotalAttributes[attr.Key] += attr.Value;
         }
+
     }
     
     //增加模块
