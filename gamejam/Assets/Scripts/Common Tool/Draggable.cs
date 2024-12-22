@@ -40,7 +40,7 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (unit != null)
             {
                 unit.AddModule(module);
-                Destroy(gameObject); 
+                canvasGroup.alpha = 0f;
             }
         }
     }

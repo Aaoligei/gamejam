@@ -24,19 +24,19 @@ public class PlayerCommonBehavior : MonoBehaviour
 
     private void Update()
     {
-        //È·¶¨¹¥»÷Ä¿±ê
+        //È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
         transform, 10000f, "enemy");
         AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
 
-        //Ö´ÐÐÆÕÍ¨¹¥»÷
+        //Ö´ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½
         if (Vector3.Distance(transform.position, AttackTargetCollider.transform.position) 
         <= Attributes[AttributeType.AttackRange])
         {
             if(!isCommonAttack)
             {
-                Debug.Log("¹¥»÷");
-                isCommonAttack = true;//¹¥»÷ºó½øÈë¼ä¸ô
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½");
+                isCommonAttack = true;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 AttackTarget.TakeDamage(Attributes[AttributeType.AttackPower], unit.damegeType);
             }
             else
@@ -51,10 +51,9 @@ public class PlayerCommonBehavior : MonoBehaviour
         }
         else
         {
-            //ÒÆ¶¯
+            //ï¿½Æ¶ï¿½
             transform.position = Vector3.Lerp(transform.position, AttackTargetCollider.transform.position,
             Time.deltaTime * Attributes[AttributeType.MoveSpeed]);
         }
-
     }
 }
