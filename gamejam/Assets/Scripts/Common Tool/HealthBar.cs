@@ -23,15 +23,16 @@ public class HealthBar : MonoBehaviour
     public float barChangeSpeed = 10f;
 
     private Coroutine adjustBarWidthCoroutine;//用于判断血条变化是否正在进行
+
     private void Start()
     {
         Attributes = GetComponent<Unit>().TotalAttributes;
         fullWidth = topBar.rect.width;
-        MaxValue = Attributes[AttributeType.HealthCap];
     }
+
     private void Update()
     {
- 
+        MaxValue = Attributes[AttributeType.HealthCap];
         //Value = Attributes[AttributeType.CurrentHealth];
         //测试用
         if (Input.GetMouseButtonDown(1))
@@ -43,6 +44,7 @@ public class HealthBar : MonoBehaviour
             Change(-20);
         }
     }
+
     //改变血条
     public void Change(int amount)
     {
@@ -56,6 +58,7 @@ public class HealthBar : MonoBehaviour
 
         adjustBarWidthCoroutine = StartCoroutine(AdjustBarWidth(amount));
     }
+
     //血条变化效果实现
     private IEnumerator AdjustBarWidth(int amount)
     {
