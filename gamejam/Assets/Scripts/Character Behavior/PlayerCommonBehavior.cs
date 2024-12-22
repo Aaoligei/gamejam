@@ -50,10 +50,13 @@ public class PlayerCommonBehavior : MonoBehaviour
                 }
             }
         }
-
-        //ÒÆ¶¯
-        transform.position = Vector3.Lerp(transform.position, AttackTargetCollider.transform.position,
-        Time.deltaTime * Attributes[AttributeType.MoveSpeed]);
+        else
+        {
+            //ÒÆ¶¯
+            transform.position = Vector3.Lerp(transform.position, AttackTargetCollider.transform.position,
+            Time.deltaTime * Attributes[AttributeType.MoveSpeed]);
+        }
+        
     }
 
 }
