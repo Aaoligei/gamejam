@@ -15,9 +15,9 @@ MonoBehaviour:
   InitAttributes:
     _serializedList:
     - Key: 0
-      Value: 1400
+      Value: 100
     - Key: 1
-      Value: 74
+      Value: 53
     - Key: 2
       Value: 100
     - Key: 3

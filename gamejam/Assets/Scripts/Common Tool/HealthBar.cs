@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    private SerializedDictionary<AttributeType, float> Attributes;
-
     [SerializeField]
-    private float MaxValue;//最大血量
+    public float MaxValue;//最大血量
     [SerializeField]
-    private float Value;//当前血量
+    public float Value;//当前血量
 
     [SerializeField]
     private RectTransform bottomBar;
@@ -26,27 +24,11 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        Attributes = GetComponent<Unit>().TotalAttributes;
         fullWidth = topBar.rect.width;
     }
 
-    private void Update()
-    {
-        MaxValue = Attributes[AttributeType.HealthCap];
-        //Value = Attributes[AttributeType.CurrentHealth];
-        //测试用
-        if (Input.GetMouseButtonDown(1))
-        {
-            Change(20);
-        }
-        if(Input.GetMouseButtonDown(0))
-        {
-            Change(-20);
-        }
-    }
-
     //改变血条
-    public void Change(int amount)
+    public void Change(float amount)
     {
         Value = Mathf.Clamp(Value + amount, 0, MaxValue);
 
@@ -60,7 +42,7 @@ public class HealthBar : MonoBehaviour
     }
 
     //血条变化效果实现
-    private IEnumerator AdjustBarWidth(int amount)
+    private IEnumerator AdjustBarWidth(float amount)
     {
         //用于区分扣血和加血时候的不同效果
         var suddenChangeBar = amount >= 0 ? bottomBar : topBar;//变化更快的条

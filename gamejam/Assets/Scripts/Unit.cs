@@ -18,6 +18,8 @@ public class Unit:MonoBehaviour
     public Skill SkillModule;
     public AttackType damegeType;
 
+    public HealthBar healthBar;
+
     //赋予单位基础属性
     public void Awake()
     {
@@ -34,8 +36,16 @@ public class Unit:MonoBehaviour
                 TotalAttributes[attr.Key] += attr.Value;
         }
 
+        healthBar = GetComponent<HealthBar>();
+        healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
+        healthBar.Value = TotalAttributes[AttributeType.HealthCap];
     }
-    
+
+    private void Update()
+    {
+        healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
+    }
+
     //增加模块
     public void AddModule(GameModule module)
     {
@@ -63,6 +73,7 @@ public class Unit:MonoBehaviour
             effectiveDamage = Mathf.Max(1.0f, damage - TotalAttributes[AttributeType.MagicDefense]);
         }
         TotalAttributes[AttributeType.CurrentHealth]-=effectiveDamage;
+        healthBar.Change(-effectiveDamage);
         if (TotalAttributes[AttributeType.CurrentHealth] <= 0)
         {
             TotalAttributes[AttributeType.CurrentHealth] = 0;

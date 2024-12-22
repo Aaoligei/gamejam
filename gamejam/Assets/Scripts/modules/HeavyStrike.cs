@@ -22,6 +22,7 @@ public class HeavyStrike : Skill
     protected override void Start()
     {
         base.Start();
+        isSkill = true;
     }
 
     private void Update()

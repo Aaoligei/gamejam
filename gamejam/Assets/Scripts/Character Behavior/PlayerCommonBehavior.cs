@@ -43,17 +43,14 @@ public class PlayerCommonBehavior : MonoBehaviour
         AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
 
         //判断技能是否可以发动
-        if(skillModule.cooldown <= 0)
-        {
 
-        }
 
         //判断是否在普攻范围内并攻击
         if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
         {
             if(!isCommonAttack)
             {
-                Debug.Log("普通攻击");
+                //Debug.Log("普通攻击");
                 isCommonAttack = true;//攻击后进入间隔
                 AttackTarget.TakeDamage(attackPower, unit.damegeType);
             }

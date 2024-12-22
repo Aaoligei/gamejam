@@ -33,15 +33,19 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         //射线检测部分
         RaycastHit2D hit = Physics2D.Raycast(eventData.pointerCurrentRaycast.worldPosition, Vector2.zero);
+        Debug.Log(hit.collider);
         if (hit.collider != null && hit.collider.CompareTag("Unit"))
         {
             Debug.Log("击中物体");
             Unit unit = hit.collider.GetComponentInParent<Unit>();
             if (unit != null)
             {
-                unit.SkillModule = module;
                 unit.AddModule(module);
                 canvasGroup.alpha = 0f;
+                if(module.isSkill)
+                {
+                    unit.SkillModule = (Skill)module;
+                }
             }
         }
     }
