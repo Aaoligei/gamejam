@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ModuleHealth : GameModule
 {
-    
-    
+    private void Start()
+    {
+        Attributes[AttributeType.HealthCap] = 100;
+    }
+
 }

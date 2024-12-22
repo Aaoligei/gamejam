@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Unit:MonoBehaviour
 {
+    public string Name;
     //角色模块列表
     public List<GameModule> Modules;
     //角色的基础属性
@@ -44,5 +45,29 @@ public class Unit:MonoBehaviour
     public void UseSkill(Skill skill, Unit target)
     {
         skill.Effect(target);
+    }
+
+    //受到伤害
+    public void TakeDamage(float damage,AttackType attackType)
+    {
+        float effectiveDamage;
+        if (attackType == AttackType.Physic)
+        {
+            effectiveDamage = Mathf.Max(1.0f, damage - TotalAttributes[AttributeType.PhysicalDefense]);
+        }
+        else
+        {
+            effectiveDamage = Mathf.Max(1.0f, damage - TotalAttributes[AttributeType.MagicDefense]);
+        }
+        TotalAttributes[AttributeType.CurrentHealth]-=effectiveDamage;
+        if (TotalAttributes[AttributeType.CurrentHealth] <= 0)
+        {
+            TotalAttributes[AttributeType.CurrentHealth] = 0;
+            Debug.Log($"{name} has been slained!");
+        }
+        else
+        {
+
+        }
     }
 }
