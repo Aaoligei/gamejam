@@ -13,15 +13,20 @@ public class PlayerCommonBehavior : MonoBehaviour
     private Unit AttackTarget;
     private Vector3 AttackPos;
 
+    private Collider2D TargetCollider;
+    private Unit Target;
+    private Vector3 TargetPos;
+
     private float moveSpeed;
     private float attackPower;
     private float attackRange;
 
-    private Skill skillModule;
+    private Skill skill;
 
     [SerializeField]private bool isCommonAttack = false;
 
-    private float time;
+    private float attackTime = 0;
+    private float skillTime = 0;
     private void Start()
     {
         unit = GetComponent<Unit>();
@@ -34,7 +39,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         moveSpeed = Attributes[AttributeType.MoveSpeed];
         attackPower = Attributes[AttributeType.AttackPower];
         attackRange = Attributes[AttributeType.AttackRange];
-        skillModule = unit.SkillModule;
+        skill = unit.skill;
         
         //确定普攻/技能攻击 目标
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
@@ -42,32 +47,78 @@ public class PlayerCommonBehavior : MonoBehaviour
         AttackPos = AttackTargetCollider.transform.position;
         AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
 
+
         //判断技能是否可以发动
-
-
-        //判断是否在普攻范围内并攻击
-        if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
+        if(skill != null)
         {
-            if(!isCommonAttack)
+            if (skillTime >= skill.cooldown)
             {
-                //Debug.Log("普通攻击");
-                isCommonAttack = true;//攻击后进入间隔
-                AttackTarget.TakeDamage(attackPower, unit.damegeType);
-            }
-            else
-            {
-                time += Time.deltaTime;
-                if(time > Attributes[AttributeType.AttackInterval])
+                CheckTarget();    
+                if (Vector3.Distance(transform.position, TargetPos) <= skill.skillRange)
                 {
-                    isCommonAttack = false;
-                    time = 0;
+                    skillTime = 0;
+                    //技能流水线
+                }
+                else
+                {
+                    Move();
                 }
             }
         }
+
+        //判断是否在普攻范围内并攻击
+        else if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
+             {
+                CommonAttack();
+             }
         else
         {
-            //移动
-            transform.position = Vector3.Lerp(transform.position, AttackPos, Time.deltaTime * moveSpeed);
+            Move();
+        }
+    }
+
+    //移动
+    void Move()
+    {
+        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
+        skillTime += Time.deltaTime;
+        attackTime += Time.deltaTime;
+    }
+
+    //普攻
+    void CommonAttack()
+    {
+        if (!isCommonAttack)
+        {
+            //Debug.Log("普通攻击");
+            isCommonAttack = true;//攻击后进入间隔
+            AttackTarget.TakeDamage(attackPower, unit.damegeType);
+        }
+        else
+        {
+            attackTime += Time.deltaTime;
+            if (attackTime > Attributes[AttributeType.AttackInterval])
+            {
+                isCommonAttack = false;
+                attackTime = 0;
+            }
+        }
+    }
+
+    //判断目标是否为友方，并设置target相关
+    void CheckTarget()
+    {
+        if (!skill.isAttack)
+        {
+            TargetCollider = CharacterBehaviorTool.AttackRangeCheck(transform, 10000f, "Unit");
+            TargetPos = TargetCollider.transform.position;
+            Target = TargetCollider.GetComponentInParent<Unit>();
+        }
+        else
+        {
+            TargetCollider = AttackTargetCollider;
+            TargetPos = AttackPos;
+            Target = AttackTarget;
         }
     }
 }

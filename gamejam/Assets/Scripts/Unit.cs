@@ -13,7 +13,7 @@ public class Unit:MonoBehaviour
     [SerializeField]
     private BaseAttributes ba;
 
-    public Skill SkillModule;
+    public Skill skill = null;
     public AttackType damegeType;
 
     public HealthBar healthBar;
