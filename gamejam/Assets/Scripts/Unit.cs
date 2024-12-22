@@ -31,10 +31,16 @@ public class Unit:MonoBehaviour
         {
             foreach (var attr in module.Attributes)
                 TotalAttributes[attr.Key] += attr.Value;
+            
         }
 
     }
-    
+
+    private void Update()
+    {
+        
+    }
+
     //Ôö¼ÓÄ£¿é
     public void AddModule(GameModule module)
     {
@@ -65,11 +71,11 @@ public class Unit:MonoBehaviour
         if (TotalAttributes[AttributeType.CurrentHealth] <= 0)
         {
             TotalAttributes[AttributeType.CurrentHealth] = 0;
-            Debug.Log($"{name} has been slained!");
+            Debug.Log($"{Name} has been slained!");
         }
         else
         {
-
+            Debug.Log($"{Name} has been damaged!");
         }
     }
 }

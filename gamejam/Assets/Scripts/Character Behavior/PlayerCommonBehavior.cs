@@ -35,7 +35,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         {
             if(!isCommonAttack)
             {
-                Debug.Log("����");
+                Debug.Log("开始攻击");
                 isCommonAttack = true;//�����������
                 AttackTarget.TakeDamage(Attributes[AttributeType.AttackPower], unit.damegeType);
             }

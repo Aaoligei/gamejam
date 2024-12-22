@@ -7,6 +7,7 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private GameModule module;
+    public GameObject MGO;
 
     void Awake()
     {
@@ -40,7 +41,8 @@ public class DraggableModule : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (unit != null)
             {
                 unit.AddModule(module);
-                canvasGroup.alpha = 0f;
+                Instantiate(MGO,hit.transform.position, hit.transform.rotation, hit.collider.transform);
+                Destroy(this);
             }
         }
     }

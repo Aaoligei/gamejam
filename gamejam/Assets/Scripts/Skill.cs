@@ -15,4 +15,5 @@ public class Skill : GameModule
     {
         timer=cooldown;
     }
+    
 }
