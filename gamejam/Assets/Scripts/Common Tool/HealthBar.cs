@@ -36,6 +36,7 @@ public class HealthBar : MonoBehaviour
             Change(-20);
         }
     }
+    //改变血条
     public void Change(int amount)
     {
         Value = Mathf.Clamp(Value + amount, 0, MaxValue);
@@ -48,7 +49,7 @@ public class HealthBar : MonoBehaviour
 
         adjustBarWidthCoroutine = StartCoroutine(AdjustBarWidth(amount));
     }
-
+    //血条变化效果实现
     private IEnumerator AdjustBarWidth(int amount)
     {
         //用于区分扣血和加血时候的不同效果
