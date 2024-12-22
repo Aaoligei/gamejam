@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//»ù±¾Ä£¿é
+//ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 public class GameModule:MonoBehaviour
-{   
-    //Ä£¿éÀà±ð
-    public bool isSkill = false;
-    //Ä£¿éÃû³Æ
+{
+    public bool isSkill;
+    //Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public string Name { get; private set; }
-    //Ä£¿éÊôÐÔ
+    //Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [SerializedDictionary("Base Attribute", "Value")]
     public SerializedDictionary<AttributeType, float> Attributes;
 
-    //Ä£¿éÊôÐÔ¸Ä±ä
+    //Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸Ä±ï¿½
     public void ChangeAttribute(AttributeType type, float value)
     {
         if (Attributes.ContainsKey(type))
