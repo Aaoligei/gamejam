@@ -27,3 +27,8 @@ public class BaseAttributes : ScriptableObject
     [SerializedDictionary("Base Attribute", "Value")]
     public SerializedDictionary<AttributeType, float> InitAttributes;
 }
+
+public interface ISkillModule
+{
+    void Process(Skill skill);
+}
