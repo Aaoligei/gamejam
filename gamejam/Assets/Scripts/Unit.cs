@@ -37,7 +37,7 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
         healthBar.Value = TotalAttributes[AttributeType.HealthCap];
         //配置技能
-        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 5.0f, true, 1.0f, 10.0f);
+        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 5.0f, true, 1.0f, 10.0f,AttackType.Physic);
         //技能管线
         foreach(var module in Modules)
         {
@@ -80,6 +80,7 @@ public class Unit:MonoBehaviour
         {
             TotalAttributes[AttributeType.CurrentHealth] = 0;
             Debug.Log($"{Name} 被击杀！");
+            Destroy(this.gameObject);
         }
         else
         {
