@@ -36,11 +36,15 @@ public class Unit:MonoBehaviour
         healthBar = GetComponent<HealthBar>();
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
         healthBar.Value = TotalAttributes[AttributeType.HealthCap];
+        //配置技能
+        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 15.0f, true, 1.0f, 10.0f);
     }
 
     private void Update()
     {
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
+
+        
     }
 
     //增加模块
@@ -69,11 +73,11 @@ public class Unit:MonoBehaviour
         if (TotalAttributes[AttributeType.CurrentHealth] <= 0)
         {
             TotalAttributes[AttributeType.CurrentHealth] = 0;
-            Debug.Log($"{Name} has been slained!");
+            Debug.Log($"{Name} 被击杀！");
         }
         else
         {
-            Debug.Log($"{Name} has been damaged!");
+            Debug.Log($"{Name} 受到{effectiveDamage}伤害!");
         }
     }
 }

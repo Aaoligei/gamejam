@@ -51,6 +51,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         //判断技能是否可以发动
         if(skill != null)
         {
+            skillTime += Time.deltaTime;//加了这一行，要不然skillTimer一直是0
             if (skillTime >= skill.cooldown)
             {
                 CheckTarget();    
@@ -58,6 +59,7 @@ public class PlayerCommonBehavior : MonoBehaviour
                 {
                     skillTime = 0;
                     //技能流水线
+                    skill.Excute();
                 }
                 else
                 {

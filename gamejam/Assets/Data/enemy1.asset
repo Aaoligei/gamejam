@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b5104c19b060c646b59f17dfb2f5411, type: 3}
-  m_Name: monster01
+  m_Name: enemy1
   m_EditorClassIdentifier: 
   InitAttributes:
     _serializedList:
     - Key: 0
       Value: 100
     - Key: 1
-      Value: 84
+      Value: 100
     - Key: 2
       Value: 100
     - Key: 3

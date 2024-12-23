@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 17810929}
   m_Layer: 7
   m_HasEditorInfo: 1
-  m_Name: Square
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 679463986}
   m_Layer: 0
   m_HasEditorInfo: 1
-  m_Name: 01
+  m_Name: Enemy01
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,12 +810,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f62096487c81d4abba91b3b682b18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: "\u654C\u4EBA1"
   Modules: []
   TotalAttributes:
     _serializedList: []
   ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
-  SkillModule: {fileID: 0}
   damegeType: 0
   healthBar: {fileID: 0}
 --- !u!114 &679463987
@@ -1474,7 +1473,6 @@ MonoBehaviour:
   TotalAttributes:
     _serializedList: []
   ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
-  SkillModule: {fileID: 0}
   damegeType: 0
   healthBar: {fileID: 0}
 --- !u!114 &1910552451
@@ -1578,7 +1576,6 @@ GameObject:
   - component: {fileID: 4300960658474954714}
   - component: {fileID: 3524838511462267407}
   - component: {fileID: 8240402279768699529}
-  - component: {fileID: 8614623891030477543}
   - component: {fileID: 7360113341137364642}
   m_Layer: 5
   m_HasEditorInfo: 1
@@ -1735,6 +1732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51474e26bc836ab43bc06788fcefc32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MGO: {fileID: 0}
 --- !u!225 &8240402279768699529
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1763,35 +1761,16 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 214.4013, y: -98.51749}
+  m_AnchoredPosition: {x: 303.3, y: -25.1}
   m_SizeDelta: {x: 30.8026, y: 32.965}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8614623891030477543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734929445343874809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d049710f2a2674fb9ad4fec2c340a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSkill: 0
-  Attributes:
-    _serializedList: []
-  skillRange: 0
-  cooldown: 0
-  damage: 100
-  damageType: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1300326175}
   - {fileID: 519420032}
+  - {fileID: 365266804}
   - {fileID: 17810930}
   - {fileID: 1910552448}
-  - {fileID: 1300326175}
-  - {fileID: 365266804}
   - {fileID: 679463988}
