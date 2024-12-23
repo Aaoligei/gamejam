@@ -63,7 +63,6 @@ public class PlayerCommonBehavior : MonoBehaviour
                 CheckTarget();    
                 if (Vector3.Distance(transform.position, TargetPos) <= skill.skillRange)
                 {
-                    Debug.Log("可以释放技能");
                     skillTime = 0;
                     //技能
                     skill.Excute();
