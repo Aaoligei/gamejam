@@ -20,8 +20,10 @@ public class Unit:MonoBehaviour
 
     public void Awake()
     {
-        TotalAttributes=ba.InitAttributes;
-        TotalAttributes[AttributeType.CurrentHealth] = ba.InitAttributes[AttributeType.HealthCap];
+        foreach (var attr in ba.InitAttributes)
+        {
+            TotalAttributes[attr.Key]= attr.Value;
+        }
     }
 
     public void Start()
@@ -37,7 +39,9 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
         healthBar.Value = TotalAttributes[AttributeType.HealthCap];
         //配置技能
-        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 5.0f, true, 1.0f, 10.0f,AttackType.Physic);
+        skill = new HeavyStrike();
+        skill.InitSkill();
+        skill.currentUnit = this.gameObject;
         //技能管线
         foreach(var module in Modules)
         {

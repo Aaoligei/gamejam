@@ -19,9 +19,9 @@ MonoBehaviour:
     - Key: 1
       Value: 100
     - Key: 2
-      Value: 100
+      Value: 0
     - Key: 3
-      Value: 100
+      Value: 0
     - Key: 4
       Value: 100
     - Key: 5

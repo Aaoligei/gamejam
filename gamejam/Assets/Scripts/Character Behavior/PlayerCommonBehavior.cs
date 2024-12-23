@@ -44,9 +44,15 @@ public class PlayerCommonBehavior : MonoBehaviour
         //确定普攻/技能攻击 目标
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
         transform, 10000f, "enemy");
-        AttackPos = AttackTargetCollider.transform.position;
-        AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
-
+        if( AttackTargetCollider != null)
+        {
+            AttackPos = AttackTargetCollider.transform.position;
+            AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
+        }
+        else
+        {
+            Debug.Log("没有目标");
+        }
 
         //判断是否有技能
         if(skill != null)
@@ -57,8 +63,9 @@ public class PlayerCommonBehavior : MonoBehaviour
                 CheckTarget();    
                 if (Vector3.Distance(transform.position, TargetPos) <= skill.skillRange)
                 {
+                    Debug.Log("可以释放技能");
                     skillTime = 0;
-                    //技能流水线
+                    //技能
                     skill.Excute();
                 }
                 else
@@ -93,6 +100,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
+        Debug.Log("正在移动...");
     }
 
     //普攻

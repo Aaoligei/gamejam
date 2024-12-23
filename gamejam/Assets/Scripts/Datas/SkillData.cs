@@ -6,8 +6,8 @@ using UnityEngine;
 public class SkillData : ScriptableObject
 {
     public string Name;
-    public GameObject currentUnit;//技能当前挂载单位
-    public Unit target;//技能目标
+    //public GameObject currentUnit;//技能当前挂载单位
+    //public Unit target;//技能目标
     public float skillRange;//技能距离
     public float skillArea;//技能作用范围
     public bool isAttack;//技能类别

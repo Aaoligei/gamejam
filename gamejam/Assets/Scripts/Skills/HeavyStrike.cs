@@ -5,8 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class HeavyStrike : Skill
 {
-    public HeavyStrike(string name, GameObject currentUnit, Unit target, float skillRange, bool isAttack, float cooldown,float damage, AttackType damageType) : base(name, currentUnit, target, skillRange, isAttack, cooldown, damage, damageType)
+    public HeavyStrike()
     {
+        skillData=Resources.Load<SkillData>("heavyStrike");
     }
 
     public override void Excute()
@@ -20,7 +21,7 @@ public class HeavyStrike : Skill
             
             if (unit != null)
             {
-                Debug.Log("释放技能'重斩'");
+                Debug.Log($"释放技能'{Name}'");
                 unit.TakeDamage(damage, damageType);
             }
         }
