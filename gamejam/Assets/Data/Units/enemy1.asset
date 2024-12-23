@@ -30,3 +30,8 @@ MonoBehaviour:
       Value: 1.5
     - Key: 7
       Value: 1
+    - Key: 8
+      Value: 1
+    - Key: 9
+      Value: 1
+  description: "\u654C\u4EBA1"

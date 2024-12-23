@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class HeavyStrike : Skill
 {
-    public HeavyStrike(string _name, GameObject _go, Unit _target, float _skillRange, bool _isAttack, float _cooldown, float _damage) : base(_name, _go, _target, _skillRange, _isAttack, _cooldown, _damage)
+    public HeavyStrike(string name, GameObject currentUnit, Unit target, float skillRange, bool isAttack, float cooldown,float damage, AttackType damageType) : base(name, currentUnit, target, skillRange, isAttack, cooldown, damage, damageType)
     {
     }
 

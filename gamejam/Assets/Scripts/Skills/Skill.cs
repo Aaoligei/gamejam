@@ -8,24 +8,28 @@ public class Skill
     public string Name;
     public GameObject currentUnit;//技能当前挂载单位
     public Unit target;//技能目标
-    public float skillRange;//技能范围
+    public float skillRange;//技能距离
+    public float skillArea;//技能作用范围
     public bool isAttack;//技能类别
     public float cooldown;//技能冷却
-    public float timer;//技能计时器
     public float damage;//伤害
-    public AttackType damageType = AttackType.Physic;//伤害类型
+    public float areaAttenuation;//技能衰减比例
+    public float skillMultiplier;//技能系数
+    public AttackType damageType;//伤害类型
 
-    public Skill(string _name,GameObject _go, Unit _target, float _skillRange, bool _isAttack, float _cooldown,float _damage)
+    public Skill(string name, GameObject currentUnit, Unit target, float skillRange, bool isAttack, float cooldown, float damage, AttackType damageType)
     {
-        Name = _name;
-        currentUnit = _go;
-        target=_target;
-        skillRange = _skillRange;
-        isAttack = _isAttack;
-        cooldown = _cooldown;
-        timer=cooldown;
-        damage=_damage;
+        Name = name;
+        this.currentUnit = currentUnit;
+        this.target = target;
+        this.skillRange = skillRange;
+        this.isAttack = isAttack;
+        this.cooldown = cooldown;
+        this.damage = damage;
+        this.damageType = damageType;
     }
+
+
 
     //释放技能
     public virtual void Excute()
