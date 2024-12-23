@@ -37,7 +37,7 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
         healthBar.Value = TotalAttributes[AttributeType.HealthCap];
         //配置技能
-        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 15.0f, true, 1.0f, 10.0f);
+        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 2.0f, true, 3.0f, 10.0f);
     }
 
     private void Update()

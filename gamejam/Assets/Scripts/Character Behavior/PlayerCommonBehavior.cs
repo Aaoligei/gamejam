@@ -48,7 +48,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
 
 
-        //判断技能是否可以发动
+        //判断是否有技能
         if(skill != null)
         {
             skillTime += Time.deltaTime;//加了这一行，要不然skillTimer一直是0
@@ -66,8 +66,16 @@ public class PlayerCommonBehavior : MonoBehaviour
                     Move();
                 }
             }
+            //判断是否在普攻范围内并攻击
+            else if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
+            {
+                CommonAttack();
+            }
+            else
+            {
+                Move();
+            }
         }
-
         //判断是否在普攻范围内并攻击
         else if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
              {
@@ -92,7 +100,7 @@ public class PlayerCommonBehavior : MonoBehaviour
     {
         if (!isCommonAttack)
         {
-            //Debug.Log("普通攻击");
+            Debug.Log("普通攻击");
             isCommonAttack = true;//攻击后进入间隔
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }
