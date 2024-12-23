@@ -4,17 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//����ģ��
-public class GameModule:MonoBehaviour
+public class GameModule:MonoBehaviour,ISkillModule
 {
-    public bool isSkill;
-    //ģ������
-    public string Name { get; private set; }
-    //ģ������
+    public string Name;
     [SerializedDictionary("Base Attribute", "Value")]
     public SerializedDictionary<AttributeType, float> Attributes;
 
-    //ģ�����Ըı�
     public void ChangeAttribute(AttributeType type, float value)
     {
         if (Attributes.ContainsKey(type))
@@ -23,4 +18,10 @@ public class GameModule:MonoBehaviour
             Attributes[type] = value;
     }
 
+    public void Process(Skill skill)
+    {
+        AProcess(skill);
+    }
+
+    protected virtual void AProcess(Skill skill) { }
 }

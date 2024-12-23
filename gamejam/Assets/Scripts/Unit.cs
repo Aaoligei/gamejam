@@ -13,7 +13,7 @@ public class Unit:MonoBehaviour
     [SerializeField]
     private BaseAttributes ba;
 
-    public Skill skill = null;
+    public Skill skill ;
     public AttackType damegeType;
 
     public HealthBar healthBar;
@@ -21,7 +21,7 @@ public class Unit:MonoBehaviour
     public void Awake()
     {
         TotalAttributes=ba.InitAttributes;
-        
+        TotalAttributes[AttributeType.CurrentHealth] = ba.InitAttributes[AttributeType.HealthCap];
     }
 
     public void Start()
@@ -37,7 +37,12 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
         healthBar.Value = TotalAttributes[AttributeType.HealthCap];
         //配置技能
-        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 2.0f, true, 3.0f, 10.0f);
+        skill = new HeavyStrike("heavyStrike", this.gameObject, null, 5.0f, true, 1.0f, 10.0f);
+        //技能管线
+        foreach(var module in Modules)
+        {
+            module.Process(skill);
+        }
     }
 
     private void Update()
@@ -53,6 +58,7 @@ public class Unit:MonoBehaviour
         Modules.Add(module);
         foreach (var attr in module.Attributes)
             TotalAttributes[attr.Key] += attr.Value;
+        module.Process(skill);
     }
 
 

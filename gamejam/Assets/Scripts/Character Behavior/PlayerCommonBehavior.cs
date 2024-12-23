@@ -51,7 +51,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         //判断是否有技能
         if(skill != null)
         {
-            skillTime += Time.deltaTime;//加了这一行，要不然skillTimer一直是0
+            skillTime += Time.deltaTime;
             if (skillTime >= skill.cooldown)
             {
                 CheckTarget();    
