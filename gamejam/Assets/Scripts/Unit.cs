@@ -52,8 +52,6 @@ public class Unit:MonoBehaviour
     private void Update()
     {
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
-
-        
     }
 
     //增加模块
@@ -69,16 +67,24 @@ public class Unit:MonoBehaviour
     //受到伤害
     public void TakeDamage(float damage,AttackType attackType)
     {
-        float effectiveDamage;
+        float effectiveDamage=0;
         if (attackType == AttackType.Physic)
         {
             effectiveDamage = Mathf.Max(1.0f, damage - TotalAttributes[AttributeType.PhysicalDefense]);
         }
-        else
+        else if(attackType==AttackType.Magic)
         {
             effectiveDamage = Mathf.Max(1.0f, damage - TotalAttributes[AttributeType.MagicDefense]);
+        }else if(attackType==AttackType.Heal)
+        {
+            effectiveDamage = -damage;
+        }
+        else if(attackType == AttackType.TrueDamage)
+        {
+            effectiveDamage = damage;
         }
         TotalAttributes[AttributeType.CurrentHealth]-=effectiveDamage;
+        TotalAttributes[AttributeType.CurrentHealth] = Mathf.Clamp(TotalAttributes[AttributeType.CurrentHealth], 0, TotalAttributes[AttributeType.HealthCap]);
         healthBar.Change(-effectiveDamage);
         if (TotalAttributes[AttributeType.CurrentHealth] <= 0)
         {

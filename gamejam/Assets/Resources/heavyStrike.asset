@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: heavyStrike
   m_EditorClassIdentifier: 
   Name: heavy strike
-  skillRange: 5
+  skillRange: 1.5
   skillArea: 0
   isAttack: 1
-  cooldown: 1
-  damage: 10
+  cooldown: 4
+  damage: 5
   areaAttenuation: 0
   skillMultiplier: 0
   damageType: 0
