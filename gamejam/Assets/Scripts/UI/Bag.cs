@@ -12,6 +12,7 @@ public class Bag : MonoBehaviour
         foreach (Slot slot in slots)
         {
             slot.belongTo = belongTo;
+            slot.isBag = true; 
         }
     }
 }

@@ -1,6 +1,7 @@
 using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -54,8 +55,8 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
     }
 
-    //增加模块
-    public void AddModule(GameModule module)
+    //动态增加模块
+    public void AddModuleDynamic(GameModule module)
     {
         Modules.Add(module);
         foreach (var attr in module.Attributes)
@@ -63,6 +64,17 @@ public class Unit:MonoBehaviour
         module.Process(skill);
     }
 
+    //静态增加模块
+    public void AddModuleStatic(GameModule module)
+    {
+        Modules.Add(module);
+    }
+
+    public void RemoveModule(GameModule module)
+    {
+        if(Modules.Contains(module))
+            Modules.Remove(module);
+    }
 
     //受到伤害
     public void TakeDamage(float damage,AttackType attackType)

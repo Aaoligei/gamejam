@@ -5,12 +5,20 @@ public class Slot : MonoBehaviour
 {
     [HideInInspector] public DraggableItem currentItem;
     public Unit belongTo;
+    public bool isBag=false;
 
     public bool CanAccept(DraggableItem item)
     {
         // 定义哪些物品可以放置在此格子中
         // 可以基于类型、标签或其他条件
-        return currentItem == null; // 简单示例：只允许空格子接受新物品
+       if(currentItem == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void AcceptItem(DraggableItem item)
@@ -30,6 +38,7 @@ public class Slot : MonoBehaviour
     public void RemoveItem()
     {
         // 移除当前格子中的物品
+        RemoveModulFromGameObject(currentItem);
         currentItem = null;
     }
 
@@ -43,8 +52,20 @@ public class Slot : MonoBehaviour
             GameModule gameModule=item.GetComponent<GameModule>();
             if (gameModule != null)
             {
-                belongTo.AddModule(gameModule);
+                belongTo.AddModuleDynamic(gameModule);
             }
         } 
+    }
+
+    private void RemoveModulFromGameObject(DraggableItem item)
+    {
+        if(belongTo != null)
+        {
+            GameModule gameModule = item.GetComponent<GameModule>();
+            if (gameModule != null)
+            {
+                belongTo.RemoveModule(gameModule);
+            }
+        }
     }
 }
