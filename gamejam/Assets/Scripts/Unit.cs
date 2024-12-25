@@ -136,12 +136,12 @@ public class Unit:MonoBehaviour
                 {
                     uiPanel.SetActive(true); // 显示UI界面
                 }
-                else
+                else if(uiPanel!=null) 
                 {
                     uiPanel.SetActive(false);
                 }
             }
-            else
+            else if(uiPanel != null) 
             {
                 uiPanel.SetActive(false);
             }
