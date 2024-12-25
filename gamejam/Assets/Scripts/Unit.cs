@@ -47,7 +47,7 @@ public class Unit:MonoBehaviour
 
         healthBar = GetComponent<HealthBar>();
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
-        healthBar.Value = TotalAttributes[AttributeType.HealthCap];
+        healthBar.Value = TotalAttributes[AttributeType.CurrentHealth];
         //配置技能
         skill = new HeavyStrike();
         skill.InitSkill();
