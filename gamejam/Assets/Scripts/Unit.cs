@@ -1,13 +1,16 @@
 using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class Unit:MonoBehaviour
 {
     public string Name;
+    public GameObject uiPanel;
     public List<GameModule> Modules;
     [SerializedDictionary("Base Attribute", "Value")]
     public SerializedDictionary<AttributeType, float> TotalAttributes ;
@@ -29,6 +32,12 @@ public class Unit:MonoBehaviour
 
     public void Start()
     {
+        //隐藏UI
+        TextMeshProUGUI textMeshPro = uiPanel.GetComponentInChildren<TextMeshProUGUI>();
+        textMeshPro.text = Name+" 信息面板";
+        uiPanel.SetActive(false);
+
+        //初始化模块
         foreach (var module in Modules)
         {
             foreach (var attr in module.Attributes)
@@ -53,6 +62,7 @@ public class Unit:MonoBehaviour
     private void Update()
     {
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
+        CheckClickUI();
     }
 
     //动态增加模块
@@ -107,6 +117,34 @@ public class Unit:MonoBehaviour
         else
         {
             Debug.Log($"{Name} 受到{effectiveDamage}伤害!");
+        }
+    }
+
+    //点击显示UI
+    private void CheckClickUI()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit2D hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
+
+            // 检查是否点击到了物体
+            if (hit.collider != null)
+            {
+                Debug.Log("点击到");
+                // 检查点击的物体是否是当前单位
+                if (hit.collider.GetComponentInParent<Unit>().gameObject == gameObject)
+                {
+                    uiPanel.SetActive(true); // 显示UI界面
+                }
+                else
+                {
+                    uiPanel.SetActive(false);
+                }
+            }
+            else
+            {
+                uiPanel.SetActive(false);
+            }
         }
     }
 }
