@@ -19,6 +19,8 @@ public class EnemyCommonBehavior : MonoBehaviour
 
     private Skill skill;
 
+    private Animator animator;
+
     [SerializeField] private bool isCommonAttack = false;
 
     private float attackTime = 0;
@@ -27,6 +29,7 @@ public class EnemyCommonBehavior : MonoBehaviour
     {
         unit = GetComponent<Unit>();
         Attributes = GetComponent<Unit>().TotalAttributes;
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -50,7 +53,7 @@ public class EnemyCommonBehavior : MonoBehaviour
             Debug.Log($"{unit.Name}没有目标");
         }
 
-        Debug.Log(Vector3.Distance(transform.position, AttackPos));
+        //Debug.Log(Vector3.Distance(transform.position, AttackPos));
         //判断是否在普攻范围内并攻击
         if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
         {
@@ -65,6 +68,8 @@ public class EnemyCommonBehavior : MonoBehaviour
     //移动
     void Move()
     {
+        animator.SetBool("IsMove", true);
+        animator.SetBool("IsAttack", false);
         transform.position = Vector3.MoveTowards(transform.position, AttackPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
@@ -78,6 +83,8 @@ public class EnemyCommonBehavior : MonoBehaviour
         {
             Debug.Log($"{unit.Name}普通攻击");
             isCommonAttack = true;//攻击后进入间隔
+            animator.SetBool("IsMove", false);
+            animator.SetBool("IsAttack", true);
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }
         else
