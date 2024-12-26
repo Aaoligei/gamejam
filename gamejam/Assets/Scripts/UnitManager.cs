@@ -34,6 +34,8 @@ public class UnitManager : MonoBehaviour
 
     public void GenerateUnit(GameObject go)
     {
+        
+
         GameObject gameobj=Instantiate(go,generatePoint,Quaternion.identity,null);
         gameobj.SetActive(true);
     }
