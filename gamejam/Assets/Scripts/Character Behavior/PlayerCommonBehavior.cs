@@ -21,7 +21,7 @@ public class PlayerCommonBehavior : MonoBehaviour
     private float attackPower;
     private float attackRange;
 
-    private Skill skill;
+    [SerializeField]private Skill skill;
 
     [SerializeField]private bool isCommonAttack = false;
 
@@ -33,7 +33,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         Attributes = GetComponent<Unit>().TotalAttributes;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //获取单位属性
         moveSpeed = Attributes[AttributeType.MoveSpeed];
@@ -57,12 +57,17 @@ public class PlayerCommonBehavior : MonoBehaviour
         //判断是否有技能
         if(skill != null)
         {
+            //Debug.Log("有技能");
             skillTime += Time.deltaTime;
             if (skillTime >= skill.cooldown)
             {
-                CheckTarget();    
-                if (Vector3.Distance(transform.position, TargetPos) <= skill.skillRange)
+                Debug.Log("技能冷却好");
+                CheckTarget();
+                //Debug.Log(Target.name);
+                //Debug.Log(Vector3.Distance(transform.position, TargetPos));
+                if (skill.skillRange == 0 || Vector3.Distance(transform.position, TargetPos) <= skill.skillRange)
                 {
+                    Debug.Log("放技能");
                     skillTime = 0;
                     //技能
                     skill.Excute();
@@ -96,7 +101,7 @@ public class PlayerCommonBehavior : MonoBehaviour
     //移动
     void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, AttackPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
         Debug.Log($"{unit.Name}正在移动...");

@@ -13,10 +13,6 @@ public class EnemyCommonBehavior : MonoBehaviour
     private Unit AttackTarget;
     private Vector3 AttackPos=new Vector3(9999,9999,9999);
 
-    private Collider2D TargetCollider;
-    private Unit Target;
-    private Vector3 TargetPos;
-
     private float moveSpeed;
     private float attackPower;
     private float attackRange;
@@ -54,6 +50,7 @@ public class EnemyCommonBehavior : MonoBehaviour
             Debug.Log($"{unit.Name}没有目标");
         }
 
+        Debug.Log(Vector3.Distance(transform.position, AttackPos));
         //判断是否在普攻范围内并攻击
         if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
         {
@@ -68,7 +65,7 @@ public class EnemyCommonBehavior : MonoBehaviour
     //移动
     void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, AttackPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
         Debug.Log($"{unit.Name}正在移动...");
