@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +114,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\u6076\u9B54\u5251\u58EB\u6B7B\u4EA1_0"
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 99
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64cdfc6a8f1c2ab4493b49af0d4b3177
+      internalID: 512145586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u6076\u9B54\u5251\u58EB\u6B7B\u4EA1_1"
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 99
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b519de249bce844bb3194d8759ea90
+      internalID: -949683709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u6076\u9B54\u5251\u58EB\u6B7B\u4EA1_2"
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 99
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc08603ddeb7c7b4e947ca2518d53f9c
+      internalID: 793557126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -125,7 +188,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u6076\u9B54\u5251\u58EB\u6B7B\u4EA1_0": 512145586
+      "\u6076\u9B54\u5251\u58EB\u6B7B\u4EA1_1": -949683709
+      "\u6076\u9B54\u5251\u58EB\u6B7B\u4EA1_2": 793557126
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
