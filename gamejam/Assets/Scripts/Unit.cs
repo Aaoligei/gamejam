@@ -22,6 +22,8 @@ public class Unit:MonoBehaviour
 
     public HealthBar healthBar;
 
+    private Animator animator;
+
     public void Awake()
     {
         foreach (var attr in ba.InitAttributes)
@@ -54,7 +56,7 @@ public class Unit:MonoBehaviour
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
         healthBar.Value = TotalAttributes[AttributeType.CurrentHealth];
 
-        
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -109,6 +111,7 @@ public class Unit:MonoBehaviour
         if (TotalAttributes[AttributeType.CurrentHealth] <= 0)
         {
             TotalAttributes[AttributeType.CurrentHealth] = 0;
+            animator.SetBool("IsDeath", true);
             Debug.Log($"{Name} 被击杀！");
             Destroy(this.gameObject);
         }

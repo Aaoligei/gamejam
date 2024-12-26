@@ -21,6 +21,8 @@ public class PlayerCommonBehavior : MonoBehaviour
     private float attackPower;
     private float attackRange;
 
+    private Animator animator;
+
     [SerializeField]private Skill skill;
 
     [SerializeField]private bool isCommonAttack = false;
@@ -29,6 +31,7 @@ public class PlayerCommonBehavior : MonoBehaviour
     private float skillTime = 0;
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         unit = GetComponent<Unit>();
         Attributes = GetComponent<Unit>().TotalAttributes;
     }
@@ -71,6 +74,9 @@ public class PlayerCommonBehavior : MonoBehaviour
                     skillTime = 0;
                     //技能
                     Debug.Log("技能抬手");
+                    animator.SetBool("IsMove", false);
+                    animator.SetBool("IsAttack", false);
+                    animator.SetBool("IsSkill", true);
                     skill.Excute();
                 }
                 else
@@ -102,6 +108,9 @@ public class PlayerCommonBehavior : MonoBehaviour
     //移动
     void Move()
     {
+        animator.SetBool("IsMove", true);
+        animator.SetBool("IsAttack", false);
+        animator.SetBool("IsSkill", false);
         transform.position = Vector3.MoveTowards(transform.position, AttackPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
@@ -115,6 +124,9 @@ public class PlayerCommonBehavior : MonoBehaviour
         {
             Debug.Log($"{unit.Name}普通攻击");
             isCommonAttack = true;//攻击后进入间隔
+            animator.SetBool("IsMove", false);
+            animator.SetBool("IsAttack", true);
+            animator.SetBool("IsSkill", false);
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }
         else
