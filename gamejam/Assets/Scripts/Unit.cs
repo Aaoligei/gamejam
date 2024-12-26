@@ -33,18 +33,20 @@ public class Unit:MonoBehaviour
     public void Start()
     {
         //隐藏UI
-        TextMeshProUGUI textMeshPro = uiPanel.GetComponentInChildren<TextMeshProUGUI>();
-        textMeshPro.text = Name+" 信息面板";
-        uiPanel.SetActive(false);
+        //TextMeshProUGUI textMeshPro = uiPanel.GetComponentInChildren<TextMeshProUGUI>();
+        //textMeshPro.text = Name+" 信息面板";
+        //uiPanel.SetActive(false);
 
         //初始化模块
         foreach (var module in Modules)
         {
             //foreach (var attr in module.Attributes)
-                //TotalAttributes[attr.Key] += attr.Value;
-
-            module.Attributes=TotalAttributes;
-            module.SetAttributes();
+            //TotalAttributes[attr.Key] += attr.Value;
+            if (module != null)
+            {
+                module.Attributes=TotalAttributes;
+                module.SetAttributes();
+            }
             
         }
 
@@ -58,7 +60,8 @@ public class Unit:MonoBehaviour
         //技能管线
         foreach(var module in Modules)
         {
-            module.Process(skill);
+            if(module != null)
+                module.Process(skill);
         }
     }
 
