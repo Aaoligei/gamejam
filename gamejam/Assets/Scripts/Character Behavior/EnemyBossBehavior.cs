@@ -92,6 +92,7 @@ public class EnemyBossBehavior : MonoBehaviour
     {
         animator.SetBool("IsMove", true);
         animator.SetBool("IsAttack", false);
+        animator.SetBool("IsSkill", false);
         transform.position = Vector3.MoveTowards(transform.position, AttackPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
@@ -107,6 +108,7 @@ public class EnemyBossBehavior : MonoBehaviour
             isCommonAttack = true;//攻击后进入间隔
             animator.SetBool("IsMove", false);
             animator.SetBool("IsAttack", true);
+            animator.SetBool("IsSkill", false);
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }
         else
