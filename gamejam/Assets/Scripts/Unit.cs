@@ -40,8 +40,11 @@ public class Unit:MonoBehaviour
         //初始化模块
         foreach (var module in Modules)
         {
-            foreach (var attr in module.Attributes)
-                TotalAttributes[attr.Key] += attr.Value;
+            //foreach (var attr in module.Attributes)
+                //TotalAttributes[attr.Key] += attr.Value;
+
+            module.Attributes=TotalAttributes;
+            module.SetAttributes();
             
         }
 
