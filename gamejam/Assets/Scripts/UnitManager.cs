@@ -27,8 +27,8 @@ public class UnitManager : MonoBehaviour
         saintess.GetComponent<Unit>().InitSelfSkill(groupTherapy);
         rider.GetComponent<Unit>().InitSelfSkill(heavyStrike_rider);
         archer.GetComponent<Unit>().InitSelfSkill(rage);
-        infantry.GetComponent<Unit>().InitSelfSkill(heavyStrike_infantry);
-        magician.GetComponent<Unit>().InitSelfSkill(fireBall);
+        //infantry.GetComponent<Unit>().InitSelfSkill(heavyStrike_infantry);
+       // magician.GetComponent<Unit>().InitSelfSkill(fireBall);
 
     }
 
