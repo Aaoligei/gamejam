@@ -29,7 +29,7 @@ public class Slot : MonoBehaviour
             currentItem = item;
             item.transform.SetParent(transform, false);
             item.transform.localPosition = Vector3.zero;
-            item.transform.localScale=Vector3.one*4;
+            item.transform.localScale=Vector3.one;
 
             AddModuleToGameObject(item);
         }

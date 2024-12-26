@@ -5,22 +5,18 @@ using UnityEngine.EventSystems;
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
     private Slot ParentSlot;
+    public GameObject theParent;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
     }
                             
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // 开始拖动时增加透明度并允许排序在其他UI元素之上
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = 0.6f;
-        
-        transform.parent=null;
+
+        rectTransform= GetComponentInParent<RectTransform>();
 
         Slot slot = FindSlotUnderMouse(eventData);
         if (slot!=null){
@@ -32,14 +28,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnDrag(PointerEventData eventData)
     {
         // 根据鼠标位置更新拖动物品的位置
-        rectTransform.anchoredPosition += eventData.delta;
+        //rectTransform.anchoredPosition += eventData.delta;
+        transform.position += new Vector3(eventData.delta.x,eventData.delta.y,0);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // 结束拖动时恢复默认状态
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.alpha = 1f;
 
         // 尝试找到一个合适的格子进行吸附
         Slot slot = FindSlotUnderMouse(eventData);
