@@ -21,27 +21,28 @@ public class EnemyCommonBehavior : MonoBehaviour
     private float attackPower;
     private float attackRange;
 
-    private Skill skill;
-
     [SerializeField] private bool isCommonAttack = false;
 
     private float attackTime = 0;
     private float skillTime = 0;
+
+    private Animator animator;
+
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         unit = GetComponent<Unit>();
         Attributes = GetComponent<Unit>().TotalAttributes;
     }
 
     private void Update()
     {
-        //»ñÈ¡µ¥Î»ÊôÐÔ
+        //ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½
         moveSpeed = Attributes[AttributeType.MoveSpeed];
         attackPower = Attributes[AttributeType.AttackPower];
         attackRange = Attributes[AttributeType.AttackRange];
-        skill = unit.skill;
 
-        //È·¶¨ÆÕ¹¥/¼¼ÄÜ¹¥»÷ Ä¿±ê
+        //È·ï¿½ï¿½ï¿½Õ¹ï¿½/ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
         transform, 10000f, "Unit");
         if (AttackTargetCollider != null)
@@ -51,10 +52,10 @@ public class EnemyCommonBehavior : MonoBehaviour
         }
         else
         {
-            Debug.Log($"{unit.Name}Ã»ÓÐÄ¿±ê");
+            Debug.Log($"{unit.Name}Ã»ï¿½ï¿½Ä¿ï¿½ï¿½");
         }
 
-        //ÅÐ¶ÏÊÇ·ñÔÚÆÕ¹¥·¶Î§ÄÚ²¢¹¥»÷
+        //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½Î§ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
         {
             CommonAttack();
@@ -65,22 +66,26 @@ public class EnemyCommonBehavior : MonoBehaviour
         } 
     }
 
-    //ÒÆ¶¯
+    //ï¿½Æ¶ï¿½
     void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
+        animator.SetBool("IsAttack", false);
+        animator.SetBool("IsMove", true);
+        transform.position = Vector3.MoveTowards(transform.position, TargetPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
-        Debug.Log($"{unit.Name}ÕýÔÚÒÆ¶¯...");
+        Debug.Log($"{unit.Name}ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½...");
     }
 
-    //ÆÕ¹¥
+    //ï¿½Õ¹ï¿½
     void CommonAttack()
     {
         if (!isCommonAttack)
         {
-            Debug.Log($"{unit.Name}ÆÕÍ¨¹¥»÷");
-            isCommonAttack = true;//¹¥»÷ºó½øÈë¼ä¸ô
+            animator.SetBool("IsAttack", true);
+            animator.SetBool("IsMove", false);
+            Debug.Log($"{unit.Name}ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½");
+            isCommonAttack = true;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }
         else

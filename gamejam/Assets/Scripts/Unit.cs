@@ -22,6 +22,8 @@ public class Unit:MonoBehaviour
 
     public HealthBar healthBar;
 
+    private Animator animator;
+
     public void Awake()
     {
         foreach (var attr in ba.InitAttributes)
