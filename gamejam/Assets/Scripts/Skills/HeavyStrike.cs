@@ -21,7 +21,7 @@ public class HeavyStrike : Skill
             
             if (unit != null)
             {
-                Debug.Log($"释放技能'{Name}'");
+                Debug.Log($"{currentUnit.GetComponent<Unit>().Name}释放技能'{Name}'");
                 unit.TakeDamage(damage, damageType);
             }
         }
