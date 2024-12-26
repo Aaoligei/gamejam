@@ -51,7 +51,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         }
         else
         {
-            Debug.Log("没有目标");
+            Debug.Log($"{unit.Name}没有目标");
         }
 
         //判断是否有技能
@@ -99,7 +99,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
-        Debug.Log("正在移动...");
+        Debug.Log($"{unit.Name}正在移动...");
     }
 
     //普攻
@@ -107,7 +107,7 @@ public class PlayerCommonBehavior : MonoBehaviour
     {
         if (!isCommonAttack)
         {
-            Debug.Log("普通攻击");
+            Debug.Log($"{unit.Name}普通攻击");
             isCommonAttack = true;//攻击后进入间隔
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }

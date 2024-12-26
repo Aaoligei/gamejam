@@ -53,22 +53,14 @@ public class Unit:MonoBehaviour
         healthBar = GetComponent<HealthBar>();
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
         healthBar.Value = TotalAttributes[AttributeType.CurrentHealth];
-        //配置技能
-        skill = new HeavyStrike();
-        skill.InitSkill();
-        skill.currentUnit = this.gameObject;
-        //技能管线
-        foreach(var module in Modules)
-        {
-            if(module != null)
-                module.Process(skill);
-        }
+
+        
     }
 
     private void Update()
     {
         healthBar.MaxValue = TotalAttributes[AttributeType.HealthCap];
-        CheckClickUI();
+        //CheckClickUI();
     }
 
     //动态增加模块
@@ -153,4 +145,18 @@ public class Unit:MonoBehaviour
             }
         }
     }
+
+    public void InitSelfSkill(Skill skillType)
+    {
+        skill = skillType;
+        skill.InitSkill();
+        skill.currentUnit = this.gameObject;
+        //技能管线
+        foreach (var module in Modules)
+        {
+            if (module != null)
+                module.Process(skill);
+        }
+    }
+
 }

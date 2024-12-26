@@ -11,7 +11,7 @@ public class EnemyCommonBehavior : MonoBehaviour
 
     private Collider2D AttackTargetCollider;
     private Unit AttackTarget;
-    private Vector3 AttackPos;
+    private Vector3 AttackPos=new Vector3(9999,9999,9999);
 
     private Collider2D TargetCollider;
     private Unit Target;
@@ -51,7 +51,7 @@ public class EnemyCommonBehavior : MonoBehaviour
         }
         else
         {
-            Debug.Log("没有目标");
+            Debug.Log($"{unit.Name}没有目标");
         }
 
         //判断是否在普攻范围内并攻击
@@ -71,7 +71,7 @@ public class EnemyCommonBehavior : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
-        Debug.Log("正在移动...");
+        Debug.Log($"{unit.Name}正在移动...");
     }
 
     //普攻
@@ -79,7 +79,7 @@ public class EnemyCommonBehavior : MonoBehaviour
     {
         if (!isCommonAttack)
         {
-            Debug.Log("普通攻击");
+            Debug.Log($"{unit.Name}普通攻击");
             isCommonAttack = true;//攻击后进入间隔
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }
