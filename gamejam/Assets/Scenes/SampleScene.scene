@@ -8386,10 +8386,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: archer
       objectReference: {fileID: 0}
-    - target: {fileID: 5764721290303290051, guid: bef3e659ab3d2ed4a94f07c68eb7e901, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7304499884995126719, guid: bef3e659ab3d2ed4a94f07c68eb7e901, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.86
@@ -8486,10 +8482,6 @@ PrefabInstance:
     - target: {fileID: 5424327049077083159, guid: 1f660914d3a7055469c4bb5c534283bc, type: 3}
       propertyPath: m_Name
       value: saintess
-      objectReference: {fileID: 0}
-    - target: {fileID: 5424327049077083159, guid: 1f660914d3a7055469c4bb5c534283bc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6771610746080406715, guid: 1f660914d3a7055469c4bb5c534283bc, type: 3}
       propertyPath: m_Camera
@@ -8648,10 +8640,6 @@ PrefabInstance:
     - target: {fileID: 528115792183134909, guid: d724ef81b1d4fdb48aa434178e6b2da3, type: 3}
       propertyPath: m_Name
       value: Rider
-      objectReference: {fileID: 0}
-    - target: {fileID: 528115792183134909, guid: d724ef81b1d4fdb48aa434178e6b2da3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1069014611937638290, guid: d724ef81b1d4fdb48aa434178e6b2da3, type: 3}
       propertyPath: m_LocalPosition.x
