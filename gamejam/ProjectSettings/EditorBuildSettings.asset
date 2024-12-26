@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.scene
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/StartScene.scene
+    guid: de6f93b75c674604fa84f455d0ff7d15
   m_configObjects: {}
   m_SlimFeaturesWeixinMiniGame:
     AllocateOverhead: 1

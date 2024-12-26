@@ -17,14 +17,11 @@ public class EnemyCommonBehavior : MonoBehaviour
     private float attackPower;
     private float attackRange;
 
-    private Skill skill;
-
     private Animator animator;
 
     [SerializeField] private bool isCommonAttack = false;
 
     private float attackTime = 0;
-    private float skillTime = 0;
     private void Start()
     {
         unit = GetComponent<Unit>();
@@ -38,7 +35,6 @@ public class EnemyCommonBehavior : MonoBehaviour
         moveSpeed = Attributes[AttributeType.MoveSpeed];
         attackPower = Attributes[AttributeType.AttackPower];
         attackRange = Attributes[AttributeType.AttackRange];
-        skill = unit.skill;
 
         //确定普攻/技能攻击 目标
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
@@ -71,7 +67,6 @@ public class EnemyCommonBehavior : MonoBehaviour
         animator.SetBool("IsMove", true);
         animator.SetBool("IsAttack", false);
         transform.position = Vector3.MoveTowards(transform.position, AttackPos, Time.deltaTime * moveSpeed);
-        skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
         Debug.Log($"{unit.Name}正在移动...");
     }

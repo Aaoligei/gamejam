@@ -1,76 +1,69 @@
 using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class PlayerCommonBehavior : MonoBehaviour
+public class EnemyBossBehavior : MonoBehaviour
 {
     private Unit unit;
     private SerializedDictionary<AttributeType, float> Attributes;
 
     private Collider2D AttackTargetCollider;
     private Unit AttackTarget;
-    private Vector3 AttackPos;
-
-    private Collider2D TargetCollider;
-    private Unit Target;
-    private Vector3 TargetPos;
+    private Vector3 AttackPos = new Vector3(9999, 9999, 9999);
 
     private float moveSpeed;
     private float attackPower;
     private float attackRange;
 
+    private Skill skill;
+
     private Animator animator;
 
-    [SerializeField]private Skill skill;
-
-    [SerializeField]private bool isCommonAttack = false;
+    [SerializeField] private bool isCommonAttack = false;
 
     private float attackTime = 0;
     private float skillTime = 0;
     private void Start()
     {
-        animator = GetComponentInChildren<Animator>();
         unit = GetComponent<Unit>();
         Attributes = GetComponent<Unit>().TotalAttributes;
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        //è·å–å•ä½å±æ€§
+        //»ñÈ¡µ¥Î»ÊôĞÔ
         moveSpeed = Attributes[AttributeType.MoveSpeed];
         attackPower = Attributes[AttributeType.AttackPower];
         attackRange = Attributes[AttributeType.AttackRange];
         skill = unit.skill;
-        
-        //ç¡®å®šæ™®æ”»/æŠ€èƒ½æ”»å‡» ç›®æ ‡
+
+        //È·¶¨ÆÕ¹¥/¼¼ÄÜ¹¥»÷ Ä¿±ê
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
-        transform, 10000f, "enemy");
-        if( AttackTargetCollider != null)
+        transform, 10000f, "Unit");
+        if (AttackTargetCollider != null)
         {
             AttackPos = AttackTargetCollider.transform.position;
             AttackTarget = AttackTargetCollider.GetComponentInParent<Unit>();
         }
         else
         {
-            Debug.Log($"{unit.Name}æ²¡æœ‰ç›®æ ‡");
+            Debug.Log($"{unit.Name}Ã»ÓĞÄ¿±ê");
         }
 
-        //Debug.Log("æœ‰æŠ€èƒ½");
         skillTime += Time.deltaTime;
         if (skillTime >= skill.cooldown)
         {
-            Debug.Log("æŠ€èƒ½å†·å´å¥½");
-            CheckTarget();
+            Debug.Log("¼¼ÄÜÀäÈ´ºÃ");
             //Debug.Log(Target.name);
             //Debug.Log(Vector3.Distance(transform.position, TargetPos));
-            if (skill.skillRange == 0 || Vector3.Distance(transform.position, TargetPos) <= skill.skillRange)
+            if (Vector3.Distance(transform.position, AttackPos) <= skill.skillRange)
             {
-                Debug.Log("æ”¾æŠ€èƒ½");
+                Debug.Log("·Å¼¼ÄÜ");
                 skillTime = 0;
-                //æŠ€èƒ½
-                Debug.Log("æŠ€èƒ½æŠ¬æ‰‹");
+                //¼¼ÄÜ
+                Debug.Log("¼¼ÄÜÌ§ÊÖ");
                 animator.SetBool("IsMove", false);
                 animator.SetBool("IsAttack", false);
                 animator.SetBool("IsSkill", true);
@@ -81,7 +74,9 @@ public class PlayerCommonBehavior : MonoBehaviour
                 Move();
             }
         }
-        //åˆ¤æ–­æ˜¯å¦åœ¨æ™®æ”»èŒƒå›´å†…å¹¶æ”»å‡»
+
+        //Debug.Log(Vector3.Distance(transform.position, AttackPos));
+        //ÅĞ¶ÏÊÇ·ñÔÚÆÕ¹¥·¶Î§ÄÚ²¢¹¥»÷
         else if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
         {
             CommonAttack();
@@ -92,28 +87,26 @@ public class PlayerCommonBehavior : MonoBehaviour
         }
     }
 
-    //ç§»åŠ¨
+    //ÒÆ¶¯
     void Move()
     {
         animator.SetBool("IsMove", true);
         animator.SetBool("IsAttack", false);
-        animator.SetBool("IsSkill", false);
         transform.position = Vector3.MoveTowards(transform.position, AttackPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
-        Debug.Log($"{unit.Name}æ­£åœ¨ç§»åŠ¨...");
+        Debug.Log($"{unit.Name}ÕıÔÚÒÆ¶¯...");
     }
 
-    //æ™®æ”»
+    //ÆÕ¹¥
     void CommonAttack()
     {
         if (!isCommonAttack)
         {
-            Debug.Log($"{unit.Name}æ™®é€šæ”»å‡»");
-            isCommonAttack = true;//æ”»å‡»åè¿›å…¥é—´éš”
+            Debug.Log($"{unit.Name}ÆÕÍ¨¹¥»÷");
+            isCommonAttack = true;//¹¥»÷ºó½øÈë¼ä¸ô
             animator.SetBool("IsMove", false);
             animator.SetBool("IsAttack", true);
-            animator.SetBool("IsSkill", false);
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
         }
         else
@@ -124,23 +117,6 @@ public class PlayerCommonBehavior : MonoBehaviour
                 isCommonAttack = false;
                 attackTime = 0;
             }
-        }
-    }
-
-    //åˆ¤æ–­ç›®æ ‡æ˜¯å¦ä¸ºå‹æ–¹ï¼Œå¹¶è®¾ç½®targetç›¸å…³
-    void CheckTarget()
-    {
-        if (!skill.isAttack)
-        {
-            TargetCollider = CharacterBehaviorTool.AttackRangeCheck(transform, 10000f, "Unit");
-            TargetPos = TargetCollider.transform.position;
-            Target = TargetCollider.GetComponentInParent<Unit>();
-        }
-        else
-        {
-            TargetCollider = AttackTargetCollider;
-            TargetPos = AttackPos;
-            Target = AttackTarget;
         }
     }
 }
