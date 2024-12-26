@@ -2,6 +2,7 @@ using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCommonBehavior : MonoBehaviour
@@ -23,17 +24,20 @@ public class PlayerCommonBehavior : MonoBehaviour
 
     private Skill skill;
 
+    private Animator animator;
+
     [SerializeField]private bool isCommonAttack = false;
 
     private float attackTime = 0;
     private float skillTime = 0;
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         unit = GetComponent<Unit>();
         Attributes = GetComponent<Unit>().TotalAttributes;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //获取单位属性
         moveSpeed = Attributes[AttributeType.MoveSpeed];
@@ -65,6 +69,9 @@ public class PlayerCommonBehavior : MonoBehaviour
                 {
                     skillTime = 0;
                     //技能
+                    animator.SetBool("IsAttack", false);
+                    animator.SetBool("IsMove", false);
+                    
                     skill.Excute();
                 }
                 else
@@ -96,7 +103,9 @@ public class PlayerCommonBehavior : MonoBehaviour
     //移动
     void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * moveSpeed);
+        animator.SetBool("IsAttack", false);
+        animator.SetBool("IsMove", true);
+        transform.position = Vector3.MoveTowards(transform.position, TargetPos, Time.deltaTime * moveSpeed);
         skillTime += Time.deltaTime;
         attackTime += Time.deltaTime;
         Debug.Log("正在移动...");
@@ -107,6 +116,8 @@ public class PlayerCommonBehavior : MonoBehaviour
     {
         if (!isCommonAttack)
         {
+            animator.SetBool("IsMove", false);
+            animator.SetBool("IsAttack", true);
             Debug.Log("普通攻击");
             isCommonAttack = true;//攻击后进入间隔
             AttackTarget.TakeDamage(attackPower, unit.damegeType);
