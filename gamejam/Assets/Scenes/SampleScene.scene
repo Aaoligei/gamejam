@@ -6627,6 +6627,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5764721290303290051, guid: bef3e659ab3d2ed4a94f07c68eb7e901, type: 3}
   m_PrefabInstance: {fileID: 3065213519566966515}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &969234671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1795986276971085692, guid: bef3e659ab3d2ed4a94f07c68eb7e901, type: 3}
+  m_PrefabInstance: {fileID: 3065213519566966515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969234668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f62096487c81d4abba91b3b682b18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &989131372
 GameObject:
   m_ObjectHideFlags: 0
@@ -8186,7 +8197,7 @@ MonoBehaviour:
         m_MethodName: GenerateUnit
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1910552447}
+          m_ObjectArgument: {fileID: 969234668}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8209,7 +8220,7 @@ MonoBehaviour:
   - {fileID: 911807978}
   - {fileID: 725814731}
   - {fileID: 1210907591}
-  belongTo: {fileID: 1910552450}
+  belongTo: {fileID: 969234671}
 --- !u!114 &1113350570
 MonoBehaviour:
   m_ObjectHideFlags: 0
