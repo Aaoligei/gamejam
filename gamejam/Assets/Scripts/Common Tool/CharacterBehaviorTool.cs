@@ -39,4 +39,20 @@ public static class CharacterBehaviorTool
         }
             return null;
     }
+
+    //筛选出一个单位周围对应阵营的单位
+    public static List<Collider2D> SurroundCheck(Transform trans,float range,string camp)
+    {
+        List<Collider2D> colliders=new List<Collider2D>(Physics2D.OverlapCircleAll(trans.position, range));
+
+        foreach (var collider in colliders)
+        {
+            if(collider.tag != camp)
+            {
+                colliders.Remove(collider);
+            }
+        }
+
+        return colliders;
+    }
 }

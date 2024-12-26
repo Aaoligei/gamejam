@@ -8,7 +8,7 @@ public class GameModule:MonoBehaviour,ISkillModule
 {
     public string Name;
     [SerializedDictionary("Base Attribute", "Value")]
-    public SerializedDictionary<AttributeType, float> Attributes;
+    public SerializedDictionary<AttributeType, float> Attributes=null;
 
     public void ChangeAttribute(AttributeType type, float value)
     {
@@ -24,4 +24,6 @@ public class GameModule:MonoBehaviour,ISkillModule
     }
 
     protected virtual void AProcess(Skill skill) { }
+
+    public virtual void SetAttributes() { }
 }
