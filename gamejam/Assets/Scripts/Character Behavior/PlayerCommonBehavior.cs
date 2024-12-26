@@ -33,7 +33,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         Attributes = GetComponent<Unit>().TotalAttributes;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //获取单位属性
         moveSpeed = Attributes[AttributeType.MoveSpeed];
