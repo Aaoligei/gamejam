@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189053acfe9fc1546af2cd7b4fdd0739, type: 3}
   m_Name: groupTherapy
   m_EditorClassIdentifier: 
-  Name: 
-  skillRange: 0
-  skillArea: 0
+  Name: groupTherapy
+  skillRange: 10
+  skillArea: 3
   isAttack: 0
-  cooldown: 0
-  damage: 0
+  cooldown: 5
+  damage: 20
   areaAttenuation: 0
   skillMultiplier: 0
-  damageType: 0
+  damageType: 3
