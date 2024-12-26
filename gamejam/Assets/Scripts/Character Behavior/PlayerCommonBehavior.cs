@@ -70,6 +70,7 @@ public class PlayerCommonBehavior : MonoBehaviour
                     Debug.Log("放技能");
                     skillTime = 0;
                     //技能
+                    Debug.Log("技能抬手");
                     skill.Excute();
                 }
                 else

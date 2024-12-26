@@ -147,12 +147,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_0"
       rect:
         serializedVersion: 2
-        x: 78
-        y: 69
-        width: 129
-        height: 135
+        x: 0
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_1"
       rect:
         serializedVersion: 2
-        x: 326
-        y: 69
-        width: 129
-        height: 134
+        x: 248
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_2"
       rect:
         serializedVersion: 2
-        x: 574
-        y: 69
-        width: 129
-        height: 133
+        x: 496
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,12 +210,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_3"
       rect:
         serializedVersion: 2
-        x: 820
-        y: 69
-        width: 131
-        height: 134
+        x: 744
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_4"
       rect:
         serializedVersion: 2
-        x: 1061
-        y: 69
-        width: 138
-        height: 135
+        x: 992
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,12 +252,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_5"
       rect:
         serializedVersion: 2
-        x: 1309
-        y: 71
-        width: 4
-        height: 5
+        x: 1240
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_6"
       rect:
         serializedVersion: 2
-        x: 1308
-        y: 69
-        width: 139
-        height: 134
+        x: 1488
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,12 +294,12 @@ TextureImporter:
       name: "\u9A91\u5175\u6280\u80FD_7"
       rect:
         serializedVersion: 2
-        x: 1556
-        y: 69
-        width: 139
-        height: 133
+        x: 1736
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,27 +307,6 @@ TextureImporter:
       bones: []
       spriteID: 30c985906699e05479a1d7ceb75a5a47
       internalID: 2135294313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u9A91\u5175\u6280\u80FD_8"
-      rect:
-        serializedVersion: 2
-        x: 1814
-        y: 69
-        width: 129
-        height: 134
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29abf954696cffe4785bae60cde6e970
-      internalID: 134028179
       vertices: []
       indices: 
       edges: []
@@ -351,7 +330,6 @@ TextureImporter:
       "\u9A91\u5175\u6280\u80FD_5": -766223619
       "\u9A91\u5175\u6280\u80FD_6": -1809590970
       "\u9A91\u5175\u6280\u80FD_7": 2135294313
-      "\u9A91\u5175\u6280\u80FD_8": 134028179
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

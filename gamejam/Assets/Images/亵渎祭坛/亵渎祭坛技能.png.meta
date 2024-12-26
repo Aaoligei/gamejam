@@ -119,10 +119,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_0"
       rect:
         serializedVersion: 2
-        x: 84
-        y: 51
-        width: 101
-        height: 100
+        x: 0
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_1"
       rect:
         serializedVersion: 2
-        x: 332
-        y: 51
-        width: 101
-        height: 100
+        x: 248
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_2"
       rect:
         serializedVersion: 2
-        x: 580
-        y: 51
-        width: 101
-        height: 100
+        x: 496
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_3"
       rect:
         serializedVersion: 2
-        x: 828
-        y: 51
-        width: 101
-        height: 100
+        x: 744
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_4"
       rect:
         serializedVersion: 2
-        x: 1076
-        y: 51
-        width: 101
-        height: 100
+        x: 992
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +224,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_5"
       rect:
         serializedVersion: 2
-        x: 1324
-        y: 51
-        width: 101
-        height: 100
+        x: 1240
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,10 +245,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_6"
       rect:
         serializedVersion: 2
-        x: 1572
-        y: 51
-        width: 101
-        height: 100
+        x: 1488
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +266,10 @@ TextureImporter:
       name: "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_7"
       rect:
         serializedVersion: 2
-        x: 1820
-        y: 51
-        width: 101
-        height: 100
+        x: 1736
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,25 +296,12 @@ TextureImporter:
     nameFileIdTable:
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_0": -1791472125
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_1": -1388529348
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_10": -947170032
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_11": -1120626466
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_12": 1879332149
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_13": -1166563342
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_14": -2000972171
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_15": -2074565039
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_16": 862890346
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_17": -473367267
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_18": -1361850577
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_19": -1459404886
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_2": 684033614
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_20": 623067602
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_3": 652843419
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_4": -398916380
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_5": -572213512
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_6": 1935535292
       "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_7": -1716693212
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_8": 468611510
-      "\u4EB5\u6E0E\u796D\u575B\u6280\u80FD_9": 1231993161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -119,10 +119,10 @@ TextureImporter:
       name: "\u6076\u9B54\u5251\u58EB\u653B\u51FB_0"
       rect:
         serializedVersion: 2
-        x: 125
-        y: 99
-        width: 34
-        height: 65
+        x: 0
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: "\u6076\u9B54\u5251\u58EB\u653B\u51FB_1"
       rect:
         serializedVersion: 2
-        x: 375
-        y: 99
-        width: 33
-        height: 66
+        x: 248
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: "\u6076\u9B54\u5251\u58EB\u653B\u51FB_2"
       rect:
         serializedVersion: 2
-        x: 624
-        y: 99
-        width: 33
-        height: 66
+        x: 496
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: "\u6076\u9B54\u5251\u58EB\u653B\u51FB_3"
       rect:
         serializedVersion: 2
-        x: 839
-        y: 99
-        width: 72
-        height: 72
+        x: 744
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: "\u6076\u9B54\u5251\u58EB\u653B\u51FB_4"
       rect:
         serializedVersion: 2
-        x: 1089
-        y: 99
-        width: 61
-        height: 54
+        x: 992
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +224,10 @@ TextureImporter:
       name: "\u6076\u9B54\u5251\u58EB\u653B\u51FB_5"
       rect:
         serializedVersion: 2
-        x: 1338
-        y: 99
-        width: 60
-        height: 54
+        x: 1240
+        y: 0
+        width: 248
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
