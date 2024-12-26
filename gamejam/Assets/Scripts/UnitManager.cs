@@ -16,6 +16,7 @@ public class UnitManager : MonoBehaviour
     public Skill heavyStrike_rider;
     public Skill heavyStrike_infantry;
 
+    private float rand;
     public void Start()
     {
         fireBall=new FireBall();
@@ -34,7 +35,8 @@ public class UnitManager : MonoBehaviour
 
     public void GenerateUnit(GameObject go)
     {
-        GameObject gameobj=Instantiate(go,generatePoint,Quaternion.identity,null);
+        rand = Random.Range(-1f, 1f);
+        GameObject gameobj=Instantiate(go,generatePoint + new Vector3(0f,rand,0f),Quaternion.identity,null);
         gameobj.SetActive(true);
     }
 }
