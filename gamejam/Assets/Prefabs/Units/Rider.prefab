@@ -28,16 +28,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294378387725732276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4710798034062958697}
-  m_Father: {fileID: 1069014611937638290}
+  m_Father: {fileID: 3955376577516134755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.4, y: 0.5}
+  m_AnchoredPosition: {x: -1.6000007, y: 2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7296358088549734003
@@ -137,7 +137,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3955376577516134755}
-  - {fileID: 3959556857911185428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6455313407145728649
@@ -185,6 +184,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4248af6c38be7a41827b663b4648096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill:
+    Name: 
+    currentUnit: {fileID: 0}
+    target: {fileID: 0}
+    skillRange: 0
+    skillArea: 0
+    isAttack: 0
+    cooldown: 0
+    damage: 0
+    areaAttenuation: 0
+    skillMultiplier: 0
+    damageType: 0
+    skillData: {fileID: 0}
   isCommonAttack: 0
 --- !u!114 &8745676452189570901
 MonoBehaviour:
@@ -214,7 +226,8 @@ GameObject:
   - component: {fileID: 3955376577516134755}
   - component: {fileID: 2623704746879662782}
   - component: {fileID: 7900672326126048176}
-  - component: {fileID: 1381211273410565572}
+  - component: {fileID: 8504855802339764283}
+  - component: {fileID: 8177404270499625688}
   m_Layer: 6
   m_HasEditorInfo: 1
   m_Name: sprite
@@ -232,10 +245,11 @@ Transform:
   m_GameObject: {fileID: 772425267009903416}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3959556857911185428}
   m_Father: {fileID: 1069014611937638290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2623704746879662782
@@ -313,13 +327,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &1381211273410565572
-BoxCollider:
+--- !u!61 &8504855802339764283
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772425267009903416}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -328,12 +344,61 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.89734, y: 5.961753, z: 0.2}
-  m_Center: {x: -0.3649192, y: -0.29706, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.7174292, y: -1.1414613}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8.0625, y: 8.4375}
+    newSize: {x: 8.0625, y: 8.4375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.6276417, y: 6.1545773}
+  m_EdgeRadius: 0
+--- !u!50 &8177404270499625688
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772425267009903416}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &3399223755607141394
 GameObject:
   m_ObjectHideFlags: 0
