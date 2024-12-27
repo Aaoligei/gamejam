@@ -23,7 +23,7 @@ public class PlayerCommonBehavior : MonoBehaviour
 
     private Animator animator;
 
-    [SerializeField]private Skill skill;
+    public Skill skill;
 
     [SerializeField]private bool isCommonAttack = false;
 
@@ -76,10 +76,6 @@ public class PlayerCommonBehavior : MonoBehaviour
                 animator.SetBool("IsMove", false);
                 animator.SetBool("IsAttack", false);
                 animator.SetBool("IsSkill", true);
-                if(skill.Name == "fireball")
-                {
-                    GameObject obj = Instantiate(fireball, transform.position, Quaternion.identity);
-                }
                 skill.Excute();
             }
             else

@@ -35,5 +35,13 @@ public class Skill
     }
 
     //释放技能
-    public virtual void Excute() {}
+    public virtual void Excute() {
+        //Debug.Log("火球术！！！！！！");
+        //Collider2D coll = CharacterBehaviorTool.AttackRangeCheck(currentUnit.transform, skillRange, "enemy");
+
+        //if (coll != null)
+        //{
+       //     SkillManager.Instance.GenrateFireBall(coll, this);
+        //}
+    }
 }

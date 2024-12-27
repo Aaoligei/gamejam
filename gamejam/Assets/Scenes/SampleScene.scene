@@ -1490,11 +1490,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1643208015}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: GenerateUnit
-        m_Mode: 2
+        m_MethodName: GenerateUnitSaintess
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1910552447}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4852,11 +4852,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1643208015}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: GenerateUnit
-        m_Mode: 2
+        m_MethodName: GenerateUnitRider
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1357778911}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8057,11 +8057,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1643208015}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: GenerateUnit
-        m_Mode: 2
+        m_MethodName: GenerateUnitArcher
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 969234668}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12372,11 +12372,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1643208015}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: GenerateUnit
-        m_Mode: 2
+        m_MethodName: GenerateUnitInfantry
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 6672591499975703547}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12838,6 +12838,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759314508}
   m_CullTransparentMesh: 1
+--- !u!1 &1801980101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 1801980103}
+  - component: {fileID: 1801980102}
+  m_Layer: 0
+  m_HasEditorInfo: 1
+  m_Name: SkilManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1801980102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801980101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e329660a4a443b348acb3de0481bcf56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 5684303280981826467, guid: ade68b9ebe0f9b048825ea89ab22a81f, type: 3}
+--- !u!4 &1801980103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801980101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828804859
 GameObject:
   m_ObjectHideFlags: 0
@@ -13367,7 +13413,7 @@ Transform:
   m_GameObject: {fileID: 1915613796}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.5, y: 3, z: -1}
+  m_LocalPosition: {x: 13.5, y: 4.95, z: -1}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13655,6 +13701,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdd7ad11fa753b42a3272238995f373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  target: {fileID: 0}
+  skill:
+    Name: 
+    currentUnit: {fileID: 0}
+    target: {fileID: 0}
+    skillRange: 0
+    skillArea: 0
+    isAttack: 0
+    cooldown: 0
+    damage: 0
+    areaAttenuation: 0
+    skillMultiplier: 0
+    damageType: 0
+    skillData: {fileID: 0}
 --- !u!95 &1930454818
 Animator:
   serializedVersion: 5
@@ -13890,11 +13951,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1643208015}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: GenerateUnit
-        m_Mode: 2
+        m_MethodName: GenerateUnitMagician
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8055416606635467139}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15317,6 +15378,7 @@ SceneRoots:
   - {fileID: 1108939317}
   - {fileID: 1376891441}
   - {fileID: 1573318786}
+  - {fileID: 1801980103}
   - {fileID: 1837473438}
   - {fileID: 989131373}
   - {fileID: 6735320314158108775}
