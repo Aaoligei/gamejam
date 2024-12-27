@@ -35,8 +35,13 @@ public class UnitManager : MonoBehaviour
 
     public void GenerateUnit(GameObject go)
     {
-        rand = Random.Range(-1f, 1f);
-        GameObject gameobj=Instantiate(go,generatePoint + new Vector3(0f,rand,0f),Quaternion.identity,null);
-        gameobj.SetActive(true);
+        Unit unit = go.GetComponent<Unit>();
+        if (unit.cost <= LuneManager.luneNums)
+        {
+            rand = Random.Range(-1f, 1f);
+            GameObject gameobj=Instantiate(go,generatePoint + new Vector3(0f,rand,0f),Quaternion.identity,null);
+            gameobj.SetActive(true);
+            LuneManager.LuneDecrease(unit.cost);
+        }
     }
 }

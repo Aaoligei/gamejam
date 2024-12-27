@@ -284,6 +284,7 @@ MonoBehaviour:
   TotalAttributes:
     _serializedList: []
   ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
+  cost: 10
   skill:
     Name: 
     currentUnit: {fileID: 0}

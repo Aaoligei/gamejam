@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4171868149532605751
 Transform:
   m_ObjectHideFlags: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   TotalAttributes:
     _serializedList: []
   ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
+  cost: 5
   skill:
     Name: 
     currentUnit: {fileID: 0}

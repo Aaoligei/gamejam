@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class LuneManager : MonoBehaviour
 {
-    public int luneNums;
+    public static int luneNums;
     public int genPerSecond;
     public float timer;
-    public TextMeshProUGUI textMeshPro;
+    public static TextMeshProUGUI UINums;
+    public TextMeshProUGUI textMeshProNums;
+    public TextMeshProUGUI textMeshProSpeed;
     public static LuneManager Instance;
 
     private void Awake()
@@ -21,6 +23,12 @@ public class LuneManager : MonoBehaviour
         timer = 1.0f;
     }
 
+    private void Start()
+    {
+        textMeshProSpeed.text=genPerSecond.ToString();
+        UINums = textMeshProNums;
+    }
+
     private void Update()
     {
         timer-= Time.deltaTime;
@@ -28,12 +36,13 @@ public class LuneManager : MonoBehaviour
         {
             luneNums += genPerSecond;
             timer = 1.0f;
-            textMeshPro.text="×ÜÊýÁ¿"+luneNums.ToString();
+            textMeshProNums.text=luneNums.ToString();
         }
     }
 
-    public void LuneDecrease(int cost)
+    public static void LuneDecrease(int cost)
     {
-        luneNums -= cost;
+        LuneManager.luneNums -= cost;
+        UINums.text = luneNums.ToString();
     }
 }

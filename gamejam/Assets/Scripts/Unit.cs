@@ -16,6 +16,7 @@ public class Unit:MonoBehaviour
     public SerializedDictionary<AttributeType, float> TotalAttributes ;
     [SerializeField]
     private BaseAttributes ba;
+    public int cost;
 
     public Skill skill ;
     public AttackType damegeType;

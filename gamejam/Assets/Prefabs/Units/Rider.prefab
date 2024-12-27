@@ -157,6 +157,7 @@ MonoBehaviour:
   TotalAttributes:
     _serializedList: []
   ba: {fileID: 11400000, guid: b04d6983543da574ab87725314848a4f, type: 2}
+  cost: 15
   skill:
     Name: 
     currentUnit: {fileID: 0}
@@ -363,7 +364,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.0625, y: 8.4375}
+    oldSize: {x: 15.5, y: 15.5}
     newSize: {x: 8.0625, y: 8.4375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
