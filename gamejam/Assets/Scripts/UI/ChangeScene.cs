@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    private bool IsStop = false;
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
@@ -12,6 +13,15 @@ public class ChangeScene : MonoBehaviour
 
     public void StopGame()
     {
-        Time.timeScale = 0;
+        if(!IsStop)
+        {
+            Time.timeScale = 0;
+            IsStop = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            IsStop = false;
+        }
     }
 }
