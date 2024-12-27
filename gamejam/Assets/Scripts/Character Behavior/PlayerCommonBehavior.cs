@@ -76,7 +76,7 @@ public class PlayerCommonBehavior : MonoBehaviour
                 animator.SetBool("IsMove", false);
                 animator.SetBool("IsAttack", false);
                 animator.SetBool("IsSkill", true);
-                skill.Excute();
+                unit.skill.Excute();
             }
             else
             {

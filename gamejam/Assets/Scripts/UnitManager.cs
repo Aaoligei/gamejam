@@ -10,11 +10,11 @@ public class UnitManager : MonoBehaviour
     public GameObject archer;
     public GameObject infantry;
     public GameObject magician;
-    public Skill fireBall;
-    public Skill groupTherapy;
-    public Skill rage;
-    public Skill heavyStrike_rider;
-    public Skill heavyStrike_infantry;
+    public FireBall fireBall;
+    public GroupTherapy groupTherapy;
+    public Rage rage;
+    public HeavyStrike heavyStrike_rider;
+    public HeavyStrike heavyStrike_infantry;
 
     private float rand;
     public void Start()
@@ -26,9 +26,9 @@ public class UnitManager : MonoBehaviour
         heavyStrike_infantry =new HeavyStrike();
 
         saintess.GetComponent<Unit>().skill = groupTherapy;
-        rider.GetComponent<Unit>().skill = new HeavyStrike();
+        rider.GetComponent<Unit>().skill = heavyStrike_rider;
         archer.GetComponent<Unit>().skill= rage;
-        infantry.GetComponent<Unit>().skill= new HeavyStrike();
+        infantry.GetComponent<Unit>().skill= heavyStrike_infantry;
         magician.GetComponent<Unit>().skill= fireBall;
 
         saintess.GetComponent<Unit>().InitSelfSkill();

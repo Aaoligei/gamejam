@@ -326,6 +326,7 @@ MonoBehaviour:
     damageType: 0
     skillData: {fileID: 0}
   isCommonAttack: 0
+  fireball: {fileID: 0}
 --- !u!114 &2598381093229200717
 MonoBehaviour:
   m_ObjectHideFlags: 0
