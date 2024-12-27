@@ -27,6 +27,8 @@ public class PlayerCommonBehavior : MonoBehaviour
 
     [SerializeField]private bool isCommonAttack = false;
 
+    public GameObject fireball;
+
     private float attackTime = 0;
     private float skillTime = 0;
     private void Start()
@@ -74,6 +76,10 @@ public class PlayerCommonBehavior : MonoBehaviour
                 animator.SetBool("IsMove", false);
                 animator.SetBool("IsAttack", false);
                 animator.SetBool("IsSkill", true);
+                if(skill.Name == "fireball")
+                {
+                    GameObject obj = Instantiate(fireball, transform.position, Quaternion.identity);
+                }
                 skill.Excute();
             }
             else

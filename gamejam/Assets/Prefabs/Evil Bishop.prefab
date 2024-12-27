@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 3311409004658335594}
   - component: {fileID: 3278035700918506747}
   - component: {fileID: 2618340394385913496}
+  - component: {fileID: 1282433287215349640}
   m_Layer: 0
   m_HasEditorInfo: 1
   m_Name: Evil Bishop
@@ -268,9 +269,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963919216545602510}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eca01a81cc1acb47b4678cc6c82833e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCommonAttack: 0
+--- !u!114 &1282433287215349640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963919216545602510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23b48b5f63f3b04abc9ea582cb04f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCommonAttack: 0
