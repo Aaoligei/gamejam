@@ -29,4 +29,9 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
