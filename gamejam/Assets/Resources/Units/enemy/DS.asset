@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b5104c19b060c646b59f17dfb2f5411, type: 3}
-  m_Name: monster01
+  m_Name: DS
   m_EditorClassIdentifier: 
   InitAttributes:
     _serializedList:
     - Key: 0
-      Value: 100
+      Value: 70
     - Key: 1
-      Value: 100
+      Value: 70
     - Key: 2
       Value: 0
     - Key: 3
@@ -29,9 +29,9 @@ MonoBehaviour:
     - Key: 6
       Value: 3
     - Key: 7
-      Value: 1
+      Value: 1.2
     - Key: 8
       Value: 1
     - Key: 9
       Value: 1
-  description: "\u53CB\u519B\u5355\u4F4D1"
+  description: "\u6076\u9B54\u5251\u58EB"

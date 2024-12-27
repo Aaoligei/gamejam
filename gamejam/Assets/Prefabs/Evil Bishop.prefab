@@ -227,7 +227,7 @@ MonoBehaviour:
   Modules: []
   TotalAttributes:
     _serializedList: []
-  ba: {fileID: 11400000, guid: ef3eb42ea22f76a459690441df92d3ab, type: 2}
+  ba: {fileID: 11400000, guid: 244a85fd38928d144b5e116268a9fd7d, type: 2}
   cost: 0
   skill:
     Name: 

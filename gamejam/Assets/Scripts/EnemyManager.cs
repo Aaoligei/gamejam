@@ -17,8 +17,8 @@ public class EnemyManager : MonoBehaviour
         {
             Instance = this;
         }
-        timer = 2.0f;
-        bossTimer = 10.0f;
+        timer = 3.0f;
+        bossTimer = 15.0f;
     }
 
     private void Update()
@@ -27,12 +27,12 @@ public class EnemyManager : MonoBehaviour
         bossTimer -= Time.deltaTime;
         if(timer < 0.0f)
         {
-            timer = 2.0f;
+            timer = 3.0f;
             GenerateEnemy();
         }
         if(bossTimer < 0.0f)
         {
-            bossTimer = 10.0f;
+            bossTimer = 15.0f;
             GenerateBoss();
         }
     }
