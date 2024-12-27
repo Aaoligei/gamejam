@@ -150,9 +150,8 @@ public class Unit:MonoBehaviour
         }
     }
 
-    public void InitSelfSkill(Skill skillType)
+    public void InitSelfSkill()
     {
-        skill = skillType;
         skill.InitSkill();
         skill.currentUnit = this.gameObject;
         //技能管线

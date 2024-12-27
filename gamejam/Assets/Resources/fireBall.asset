@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: fireBall
   m_EditorClassIdentifier: 
   Name: fire ball
-  skillRange: 10
+  skillRange: 15
   skillArea: 3
   isAttack: 1
   cooldown: 3

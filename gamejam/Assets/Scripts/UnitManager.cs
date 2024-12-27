@@ -25,11 +25,17 @@ public class UnitManager : MonoBehaviour
         heavyStrike_rider =new HeavyStrike();
         heavyStrike_infantry =new HeavyStrike();
 
-        saintess.GetComponent<Unit>().InitSelfSkill(groupTherapy);
-        rider.GetComponent<Unit>().InitSelfSkill(heavyStrike_rider);
-        archer.GetComponent<Unit>().InitSelfSkill(rage);
-        infantry.GetComponent<Unit>().InitSelfSkill(heavyStrike_infantry);
-        magician.GetComponent<Unit>().InitSelfSkill(fireBall);
+        saintess.GetComponent<Unit>().skill = groupTherapy;
+        rider.GetComponent<Unit>().skill = new HeavyStrike();
+        archer.GetComponent<Unit>().skill= rage;
+        infantry.GetComponent<Unit>().skill= new HeavyStrike();
+        magician.GetComponent<Unit>().skill= fireBall;
+
+        saintess.GetComponent<Unit>().InitSelfSkill();
+        rider.GetComponent<Unit>().InitSelfSkill();
+        archer.GetComponent<Unit>().InitSelfSkill();
+        infantry.GetComponent<Unit>().InitSelfSkill();
+        magician.GetComponent<Unit>().InitSelfSkill();
 
     }
 
@@ -40,6 +46,66 @@ public class UnitManager : MonoBehaviour
         {
             rand = Random.Range(-1f, 1f);
             GameObject gameobj=Instantiate(go,generatePoint + new Vector3(0f,rand,0f),Quaternion.identity,null);
+            gameobj.SetActive(true);
+            LuneManager.LuneDecrease(unit.cost);
+        }
+    }
+
+    public void GenerateUnitSaintess()
+    {
+        Unit unit = saintess.GetComponent<Unit>();
+        if (unit.cost <= LuneManager.luneNums)
+        {
+            rand = Random.Range(-1f, 1f);
+            GameObject gameobj = Instantiate(saintess, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
+            gameobj.SetActive(true);
+            LuneManager.LuneDecrease(unit.cost);
+        }
+    }
+
+    public void GenerateUnitRider()
+    {
+        Unit unit = rider.GetComponent<Unit>();
+        if (unit.cost <= LuneManager.luneNums)
+        {
+            rand = Random.Range(-1f, 1f);
+            GameObject gameobj = Instantiate(rider, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
+            gameobj.SetActive(true);
+            LuneManager.LuneDecrease(unit.cost);
+        }
+    }
+
+    public void GenerateUnitMagician()
+    {
+        Unit unit = magician.GetComponent<Unit>();
+        if (unit.cost <= LuneManager.luneNums)
+        {
+            rand = Random.Range(-1f, 1f);
+            GameObject gameobj = Instantiate(magician, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
+            gameobj.SetActive(true);
+            LuneManager.LuneDecrease(unit.cost);
+        }
+    }
+
+    public void GenerateUnitInfantry()
+    {
+        Unit unit = infantry.GetComponent<Unit>();
+        if (unit.cost <= LuneManager.luneNums)
+        {
+            rand = Random.Range(-1f, 1f);
+            GameObject gameobj = Instantiate(infantry, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
+            gameobj.SetActive(true);
+            LuneManager.LuneDecrease(unit.cost);
+        }
+    }
+
+    public void GenerateUnitArcher()
+    {
+        Unit unit = archer.GetComponent<Unit>();
+        if (unit.cost <= LuneManager.luneNums)
+        {
+            rand = Random.Range(-1f, 1f);
+            GameObject gameobj = Instantiate(archer, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
             gameobj.SetActive(true);
             LuneManager.LuneDecrease(unit.cost);
         }
