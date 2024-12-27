@@ -24,4 +24,9 @@ public class ChangeScene : MonoBehaviour
             IsStop = false;
         }
     }
+
+    public void GOtoHome()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
 }
