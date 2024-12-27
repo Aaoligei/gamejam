@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LuneManager : MonoBehaviour
 {
@@ -44,5 +45,11 @@ public class LuneManager : MonoBehaviour
     {
         LuneManager.luneNums -= cost;
         UINums.text = luneNums.ToString();
+    }
+
+    public void ReloadScene()
+    {
+        luneNums = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
