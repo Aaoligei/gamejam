@@ -37,7 +37,7 @@ public class EnemyBossBehavior : MonoBehaviour
         moveSpeed = Attributes[AttributeType.MoveSpeed];
         attackPower = Attributes[AttributeType.AttackPower];
         attackRange = Attributes[AttributeType.AttackRange];
-        skill = unit.skill;
+        skill = unit.Skill;
 
         //确定普攻/技能攻击 目标
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(

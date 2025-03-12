@@ -18,18 +18,33 @@ public class Unit:MonoBehaviour
     private BaseAttributes ba;
     public int cost;
 
-    public Skill skill ;
+    [SerializeField]
+    private Skill skill;
     public AttackType damegeType;
 
     public HealthBar healthBar;
 
     private Animator animator;
 
+    // 添加属性访问器
+    public Skill Skill
+    {
+        get { return skill; }
+        set { skill = value; }
+    }
+
     public void Awake()
     {
         foreach (var attr in ba.InitAttributes)
         {
             TotalAttributes[attr.Key]= attr.Value;
+        }
+        
+        // 初始化技能
+        if (skill != null && skill.skillData != null)
+        {
+            skill.currentUnit = this.gameObject;
+            skill.InitSkill();
         }
     }
 
@@ -152,13 +167,24 @@ public class Unit:MonoBehaviour
 
     public void InitSelfSkill()
     {
-        skill.InitSkill();
-        skill.currentUnit = this.gameObject;
-        //技能管线
-        foreach (var module in Modules)
+        if (skill != null)
         {
-            if (module != null)
-                module.Process(skill);
+            Debug.Log($"初始化技能：{skill.GetType().Name}");
+            skill.currentUnit = this.gameObject;
+            skill.InitSkill();
+            
+            // 初始化技能管线
+            foreach (var module in Modules)
+            {
+                if (module != null)
+                {
+                    module.Process(skill);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError($"单位 {Name} 没有技能！");
         }
     }
 

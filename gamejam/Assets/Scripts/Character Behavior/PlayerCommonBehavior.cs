@@ -44,7 +44,7 @@ public class PlayerCommonBehavior : MonoBehaviour
         moveSpeed = Attributes[AttributeType.MoveSpeed];
         attackPower = Attributes[AttributeType.AttackPower];
         attackRange = Attributes[AttributeType.AttackRange];
-        skill = unit.skill;
+        skill = unit.Skill;
         
         //确定普攻/技能攻击 目标
         AttackTargetCollider = CharacterBehaviorTool.AttackRangeCheck(
@@ -57,33 +57,53 @@ public class PlayerCommonBehavior : MonoBehaviour
         else
         {
             Debug.Log($"{unit.Name}没有目标");
+            return;
         }
 
-        //Debug.Log("有技能");
+        //技能逻辑
         skillTime += Time.deltaTime;
-        if (skillTime >= skill.cooldown)
+        if (skillTime >= skill.cooldown && skill != null && skill.skillData != null)
         {
-            Debug.Log("技能冷却好");
-            CheckTarget();
-            //Debug.Log(Target.name);
-            //Debug.Log(Vector3.Distance(transform.position, TargetPos));
-            if (skill.skillRange == 0 || Vector3.Distance(transform.position, TargetPos) <= skill.skillRange)
+            Debug.Log("技能冷却完成");
+            float distanceToTarget = Vector3.Distance(transform.position, AttackPos);
+            
+            if (skill.skillRange == 0 || distanceToTarget <= skill.skillRange)
             {
-                Debug.Log("放技能");
+                Debug.Log($"{unit.Name}释放技能: {skill.Name}");
                 skillTime = 0;
-                //技能
-                Debug.Log("技能抬手");
                 animator.SetBool("IsMove", false);
                 animator.SetBool("IsAttack", false);
                 animator.SetBool("IsSkill", true);
-                unit.skill.Excute();
+                
+                // 使用类型转换确保调用正确的子类方法
+                if (skill is FireBall fireBall)
+                {
+                    fireBall.Excute();
+                }
+                else if (skill is GroupTherapy groupTherapy)
+                {
+                    groupTherapy.Excute();
+                }
+                else if (skill is Rage rage)
+                {
+                    rage.Excute();
+                }
+                else if (skill is HeavyStrike heavyStrike)
+                {
+                    heavyStrike.Excute();
+                }
+                else
+                {
+                    Debug.Log("failed");
+                    skill.Excute();
+                }
             }
             else
             {
                 Move();
             }
         }
-        //判断是否在普攻范围内并攻击
+        //普攻逻辑
         else if (Vector3.Distance(transform.position, AttackPos) <= attackRange)
         {
             CommonAttack();

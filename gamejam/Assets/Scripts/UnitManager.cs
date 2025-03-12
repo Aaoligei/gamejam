@@ -19,24 +19,23 @@ public class UnitManager : MonoBehaviour
     private float rand;
     public void Start()
     {
-        fireBall=new FireBall();
-        groupTherapy =new GroupTherapy();
-        rage =new Rage();
-        heavyStrike_rider =new HeavyStrike();
-        heavyStrike_infantry =new HeavyStrike();
+        fireBall = new FireBall();
+        groupTherapy = new GroupTherapy();
+        rage = new Rage();
+        heavyStrike_rider = new HeavyStrike();
+        heavyStrike_infantry = new HeavyStrike();
 
-        saintess.GetComponent<Unit>().skill = groupTherapy;
-        rider.GetComponent<Unit>().skill = heavyStrike_rider;
-        archer.GetComponent<Unit>().skill= rage;
-        infantry.GetComponent<Unit>().skill= heavyStrike_infantry;
-        magician.GetComponent<Unit>().skill= fireBall;
+        saintess.GetComponent<Unit>().Skill = groupTherapy;
+        rider.GetComponent<Unit>().Skill = heavyStrike_rider;
+        archer.GetComponent<Unit>().Skill = rage;
+        infantry.GetComponent<Unit>().Skill = heavyStrike_infantry;
+        magician.GetComponent<Unit>().Skill = fireBall;
 
         saintess.GetComponent<Unit>().InitSelfSkill();
         rider.GetComponent<Unit>().InitSelfSkill();
         archer.GetComponent<Unit>().InitSelfSkill();
         infantry.GetComponent<Unit>().InitSelfSkill();
         magician.GetComponent<Unit>().InitSelfSkill();
-
     }
 
     public void GenerateUnit(GameObject go)
@@ -45,8 +44,31 @@ public class UnitManager : MonoBehaviour
         if (unit.cost <= LuneManager.luneNums)
         {
             rand = Random.Range(-1f, 1f);
-            GameObject gameobj=Instantiate(go,generatePoint + new Vector3(0f,rand,0f),Quaternion.identity,null);
+            GameObject gameobj = Instantiate(go, generatePoint + new Vector3(0f,rand,0f), Quaternion.identity, null);
             gameobj.SetActive(true);
+            
+            // 为新实例化的单位创建新的技能实例
+            Unit newUnit = gameobj.GetComponent<Unit>();
+            if (unit.Skill is FireBall)
+            {
+                newUnit.Skill = new FireBall();
+            }
+            else if (unit.Skill is GroupTherapy)
+            {
+                newUnit.Skill = new GroupTherapy();
+            }
+            else if (unit.Skill is Rage)
+            {
+                newUnit.Skill = new Rage();
+            }
+            else if (unit.Skill is HeavyStrike)
+            {
+                newUnit.Skill = new HeavyStrike();
+            }
+            
+            // 初始化新单位的技能
+            newUnit.InitSelfSkill();
+            
             LuneManager.LuneDecrease(unit.cost);
         }
     }
@@ -59,6 +81,12 @@ public class UnitManager : MonoBehaviour
             rand = Random.Range(-1f, 1f);
             GameObject gameobj = Instantiate(saintess, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
             gameobj.SetActive(true);
+            
+            // 为新实例化的单位创建新的技能实例
+            Unit newUnit = gameobj.GetComponent<Unit>();
+            newUnit.Skill = new GroupTherapy();
+            newUnit.InitSelfSkill();
+            
             LuneManager.LuneDecrease(unit.cost);
         }
     }
@@ -71,6 +99,12 @@ public class UnitManager : MonoBehaviour
             rand = Random.Range(-1f, 1f);
             GameObject gameobj = Instantiate(rider, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
             gameobj.SetActive(true);
+            
+            // 为新实例化的单位创建新的技能实例
+            Unit newUnit = gameobj.GetComponent<Unit>();
+            newUnit.Skill = new HeavyStrike();
+            newUnit.InitSelfSkill();
+            
             LuneManager.LuneDecrease(unit.cost);
         }
     }
@@ -83,6 +117,12 @@ public class UnitManager : MonoBehaviour
             rand = Random.Range(-1f, 1f);
             GameObject gameobj = Instantiate(magician, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
             gameobj.SetActive(true);
+            
+            // 为新实例化的单位创建新的技能实例
+            Unit newUnit = gameobj.GetComponent<Unit>();
+            newUnit.Skill = new FireBall();
+            newUnit.InitSelfSkill();
+            
             LuneManager.LuneDecrease(unit.cost);
         }
     }
@@ -95,6 +135,12 @@ public class UnitManager : MonoBehaviour
             rand = Random.Range(-1f, 1f);
             GameObject gameobj = Instantiate(infantry, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
             gameobj.SetActive(true);
+            
+            // 为新实例化的单位创建新的技能实例
+            Unit newUnit = gameobj.GetComponent<Unit>();
+            newUnit.Skill = new HeavyStrike();
+            newUnit.InitSelfSkill();
+            
             LuneManager.LuneDecrease(unit.cost);
         }
     }
@@ -107,6 +153,12 @@ public class UnitManager : MonoBehaviour
             rand = Random.Range(-1f, 1f);
             GameObject gameobj = Instantiate(archer, generatePoint + new Vector3(0f, rand, 0f), Quaternion.identity, null);
             gameobj.SetActive(true);
+            
+            // 为新实例化的单位创建新的技能实例
+            Unit newUnit = gameobj.GetComponent<Unit>();
+            newUnit.Skill = new Rage();
+            newUnit.InitSelfSkill();
+            
             LuneManager.LuneDecrease(unit.cost);
         }
     }

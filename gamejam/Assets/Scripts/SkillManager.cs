@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
-    public GameObject fireballPrefab; // Í¶ÉäÎïÔ¤ÖÆÌåµÄÒıÓÃ
+    public GameObject fireballPrefab; // Í¶ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     private void Awake()
     {
@@ -17,10 +17,11 @@ public class SkillManager : MonoBehaviour
 
     public void GenrateFireBall(Collider2D coll,Skill skill)
     {
-        // ÊµÀı»¯Í¶ÉäÎï²¢ÉèÖÃÄ¿±ê
+        // å®ä¾‹åŒ–æŠ•æ·ç‰©å¹¶è®¾ç½®ç›®æ ‡
         GameObject fireball = Instantiate(fireballPrefab, skill.currentUnit.transform.position, Quaternion.identity);
         FireballProjectile projectile = fireball.GetComponent<FireballProjectile>();
         projectile.target = coll.transform;
-        Debug.Log("Éú³É´ó»ğÇò£¡£¡£¡£¡£¡");
+        projectile.skill = skill;  // ä¼ é€’æŠ€èƒ½æ•°æ®
+        Debug.Log($"ç”Ÿæˆç«çƒï¼ä¼¤å®³ï¼š{skill.damage}ï¼ŒèŒƒå›´ï¼š{skill.skillArea}");
     }
 }
