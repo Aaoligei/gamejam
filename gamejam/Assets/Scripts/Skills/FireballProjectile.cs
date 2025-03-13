@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class FireballProjectile : MonoBehaviour
@@ -6,12 +7,16 @@ public class FireballProjectile : MonoBehaviour
     public float speed = 10f; // 投掷物速度
     public Transform target; // 投掷物目标
     public Skill skill;
+    public GameObject explosionEffectPrefab; // 爆炸特效预制体
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator= GetComponent<Animator>();
+
         if (target != null)
         {
             // 计算目标方向
@@ -43,20 +48,36 @@ public class FireballProjectile : MonoBehaviour
             return;
         }
 
-        List<Collider2D> targets = CharacterBehaviorTool.SurroundCheck(other.transform, skill.skillArea, "enemy");
-        if (targets != null)
+        // 检查碰撞对象是否为敌人
+        Unit hitUnit = other.GetComponentInParent<Unit>();
+        if (hitUnit != null && other.CompareTag("enemy"))
         {
-            foreach (Collider2D target in targets)
+            // 获取范围内的所有目标
+            List<Collider2D> targets = CharacterBehaviorTool.SurroundCheck(transform, skill.skillArea, "enemy");
+            if (targets != null && targets.Count > 0)
             {
-                Unit unit = target.GetComponentInParent<Unit>();
-                if (unit != null)
+                foreach (Collider2D target in targets)
                 {
-                    Debug.Log($"火球击中目标：{unit.Name}，造成{skill.damage}点伤害");
-                    unit.TakeDamage(skill.damage, AttackType.Magic);
-                    // 销毁投掷物
-                    Destroy(gameObject);
+                    Unit unit = target.GetComponentInParent<Unit>();
+                    if (unit != null)
+                    {
+                        float distance = Vector2.Distance(transform.position, target.transform.position);
+                        float damageMultiplier = 1f - (distance / skill.skillArea * skill.areaAttenuation);
+                        float finalDamage = skill.damage * Mathf.Max(damageMultiplier, 0.1f);
+                        
+                        Debug.Log($"火球击中目标：{unit.Name}，距离：{distance:F2}，伤害：{finalDamage:F2}");
+                        unit.TakeDamage(finalDamage, AttackType.Magic);
+                    }
                 }
+            }
+            Destroy(gameObject);
+            // 播放爆炸特效
+            if (explosionEffectPrefab != null)
+            {
+                GameObject explosionEffect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+                Destroy(explosionEffect, 0.5f); // 1秒后销毁特效
             }
         }
     }
+
 }

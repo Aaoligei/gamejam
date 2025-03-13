@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class CharacterBehaviorTool
 {
-    //判读是否在攻击范围之类 参数：发起攻击的单位，攻击范围，要攻击的阵营
+
     public static Collider2D AttackRangeCheck(Transform trans, float attackRange, string attackcamp)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(trans.position, attackRange);
@@ -40,20 +40,21 @@ public static class CharacterBehaviorTool
             return null;
     }
 
-    //筛选出一个单位周围对应阵营的单位
-    public static List<Collider2D> SurroundCheck(Transform trans,float range,string camp)
-    {
-        List<Collider2D> colliders=new List<Collider2D>(Physics2D.OverlapCircleAll(trans.position, range));
 
-        foreach (var collider in colliders)
+    public static List<Collider2D> SurroundCheck(Transform trans, float range, string camp)
+    {
+        var allColliders = Physics2D.OverlapCircleAll(trans.position, range);
+        List<Collider2D> targetColliders = new List<Collider2D>();
+
+        foreach (var collider in allColliders)
         {
-            if(collider.tag != camp)
+            if (collider.tag == camp)
             {
-                colliders.Remove(collider);
+                targetColliders.Add(collider);
             }
         }
 
-        return colliders;
+        return targetColliders;
     }
 
 }

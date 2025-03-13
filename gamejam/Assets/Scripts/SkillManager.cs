@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
-    public GameObject fireballPrefab; // Ͷ����Ԥ���������
+    public GameObject fireballPrefab;
 
     private void Awake()
     {
